@@ -36,49 +36,68 @@
 #define _XTAL_FREQ 4000000
 
 
-static char valores[] = {1,2,4,8,16,32,64,128};
+static char valores[] = {0,1, 2, 4, 8, 16, 32, 64, 128};
 void semaforo(void);
 
 void main(void) {
     // SE CONFIGURAN LOS PUERTOS
-    ANSEL  = 0;
-    ANSELH =0;
+    ANSEL = 0;
+    ANSELH = 0;
     TRISA = 0;
-    TRISB= 255;
+    TRISB = 255;
     TRISC = 0;
     TRISD = 0; //PUERTOS A C Y D COMO SALIDAS  y puerto b como entrada]
+    PORTA = 0;
+    PORTC  = 0;
+    PORTD = 0;
+    
     OPTION_REGbits.nRBPU = 0;
-    char inicio =0;//variable que se utilizar
-    char contadorJ1 =0  , contadorJ2= 0;
-    char puertobAnterior;
-    while (1){
-        puertobAnterior = PORTB;
-            if(  (puertobAnterior && 1 ) == 0 ){
-            __delay_us(100); //delay de 100 us
-            if (btnSemaforo == 1) {  //  solto el boton
-                inicio =1; // se da inicio a la secuencia, para que empiece el juego
+    char inicio = 0; //variable que se utilizar
+    char contadorJ1 = 0, contadorJ2 = 0;
+    unsigned char puertobAnterior= 1;
+    unsigned char puertobActual = 1;
+    while(1){
+        puertobAnterior = puertobActual;
+        __delay_us(100);
+        puertobActual = PORTB;
+        if ((puertobAnterior & 1) == 0) {
+            if ((puertobActual & 1) == 1) { //  solto el boton
+                inicio = 1; // se da inicio a la secuencia, para que empiece el juego
                 semaforo();
-            } 
-            while(inicio){ // entra en esta parte si el valor de inicio es diferente de 0
-                if ( (puertobAnterior && 2) == 0){
-                    __delay_us(100);
-                    if(btnJ1 == 1 ) contadorJ1++;
-                }
             }
-     }    
-    
+            while (inicio) { // entra en esta parte si el valor de inicio es diferente de 0
+                puertobAnterior = puertobActual;
+                __delay_us(100);
+                 puertobActual = PORTB;
+                if ((puertobAnterior & 2) == 0 &&  (puertobActual & 2) == 2) 
+                    contadorJ1++;
+                 
+                if(  (puertobAnterior & 4) == 0 &&  (puertobActual & 4) == 4) 
+                   contadorJ2++; //si se presiono el boton en RB2
+                   
+                
+                
+                PORTA = valores [contadorJ1];
+                PORTC = valores [contadorJ2];
+                
+                if ( PORTA == 128 || PORTC == 128 ){
+                    inicio = 0;
+                    contadorJ1 = 0;
+                    contadorJ2 = 0;
+                }
+                
+            }
+        }
+
     }
-    
-    
-    
-    
-    return; 
+
+    return;
 }
 
-void semaforo(){
+void semaforo() {
     PORTD = 1;
     __delay_ms(500);
     PORTD = 2;
     __delay_ms(500);
-    PORTD =4;
+    PORTD = 4;
 }

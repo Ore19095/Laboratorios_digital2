@@ -1,7 +1,7 @@
 
 # 1 "main.c"
 
-# 18 "D:/programas/Mplab/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\xc.h"
+# 18 "../../../../programas/xc8/pic/include\xc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
@@ -11,7 +11,104 @@ extern double __fpnormalize(double);
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 52 "D:/programas/Mplab/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h"
+# 13 "D:\programas\xc8\pic\include\c90\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef __int24 int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 52
+typedef unsigned char uint8_t;
+
+# 58
+typedef unsigned int uint16_t;
+
+# 65
+typedef __uint24 uint24_t;
+
+# 72
+typedef unsigned long int uint32_t;
+
+# 88
+typedef signed char int_least8_t;
+
+# 96
+typedef signed int int_least16_t;
+
+# 109
+typedef __int24 int_least24_t;
+
+# 118
+typedef signed long int int_least32_t;
+
+# 136
+typedef unsigned char uint_least8_t;
+
+# 143
+typedef unsigned int uint_least16_t;
+
+# 154
+typedef __uint24 uint_least24_t;
+
+# 162
+typedef unsigned long int uint_least32_t;
+
+# 181
+typedef signed char int_fast8_t;
+
+# 188
+typedef signed int int_fast16_t;
+
+# 200
+typedef __int24 int_fast24_t;
+
+# 208
+typedef signed long int int_fast32_t;
+
+# 224
+typedef unsigned char uint_fast8_t;
+
+# 230
+typedef unsigned int uint_fast16_t;
+
+# 240
+typedef __uint24 uint_fast24_t;
+
+# 247
+typedef unsigned long int uint_fast32_t;
+
+# 268
+typedef int32_t intmax_t;
+
+# 282
+typedef uint32_t uintmax_t;
+
+# 289
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+
+# 7 "../../../../programas/xc8/pic/include\builtins.h"
+#pragma intrinsic(__nop)
+extern void __nop(void);
+
+
+#pragma intrinsic(_delay)
+extern __nonreentrant void _delay(uint32_t);
+#pragma intrinsic(_delaywdt)
+extern __nonreentrant void _delaywdt(uint32_t);
+
+# 52 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h"
 extern volatile unsigned char INDF __at(0x000);
 
 asm("INDF equ 00h");
@@ -2463,30 +2560,18 @@ extern volatile __bit nW __at(0x4A2);
 
 extern volatile __bit nWRITE __at(0x4A2);
 
-
-# 30 "D:/programas/Mplab/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h"
-#pragma intrinsic(__nop)
-extern void __nop(void);
-
-# 78
+# 76 "../../../../programas/xc8/pic/include\pic.h"
 __attribute__((__unsupported__("The " "FLASH_READ" " macro function is no longer supported. Please use the MPLAB X MCC."))) unsigned char __flash_read(unsigned short addr);
 
 __attribute__((__unsupported__("The " "FLASH_WRITE" " macro function is no longer supported. Please use the MPLAB X MCC."))) void __flash_write(unsigned short addr, unsigned short data);
 
 __attribute__((__unsupported__("The " "FLASH_ERASE" " macro function is no longer supported. Please use the MPLAB X MCC."))) void __flash_erase(unsigned short addr);
 
-# 114 "D:/programas/Mplab/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\eeprom_routines.h"
+# 114 "../../../../programas/xc8/pic/include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 
-
-# 91 "D:/programas/Mplab/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h"
-#pragma intrinsic(_delay)
-extern __nonreentrant void _delay(unsigned long);
-#pragma intrinsic(_delaywdt)
-extern __nonreentrant void _delaywdt(unsigned long);
-
-# 137
+# 127 "../../../../programas/xc8/pic/include\pic.h"
 extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
@@ -2509,34 +2594,56 @@ extern __bank0 __bit __timeout;
 #pragma config WRT = OFF
 
 # 39
-static char valores[] = {1,2,4,8,16,32,64,128};
+static char valores[] = {0,1, 2, 4, 8, 16, 32, 64, 128};
 void semaforo(void);
 
 void main(void) {
 
 ANSEL = 0;
-ANSELH =0;
+ANSELH = 0;
 TRISA = 0;
-TRISB= 255;
+TRISB = 255;
 TRISC = 0;
 TRISD = 0;
+PORTA = 0;
+PORTC = 0;
+PORTD = 0;
+
 OPTION_REGbits.nRBPU = 0;
-char inicio =0;
-char contadorJ1 =0 , contadorJ2= 0;
-char puertobAnterior;
-while (1){
-puertobAnterior = PORTB;
-if( (puertobAnterior && 1 ) == 0 ){
+char inicio = 0;
+char contadorJ1 = 0, contadorJ2 = 0;
+unsigned char puertobAnterior= 1;
+unsigned char puertobActual = 1;
+while(1){
+puertobAnterior = puertobActual;
 _delay((unsigned long)((100)*(4000000/4000000.0)));
-if (PORTBbits.RB0 == 1) {
-inicio =1;
+puertobActual = PORTB;
+if ((puertobAnterior & 1) == 0) {
+if ((puertobActual & 1) == 1) {
+inicio = 1;
 semaforo();
 }
-while(inicio){
-if ( (puertobAnterior && 2) == 0){
+while (inicio) {
+puertobAnterior = puertobActual;
 _delay((unsigned long)((100)*(4000000/4000000.0)));
-if(PORTBbits.RB1 == 1 ) contadorJ1++;
+puertobActual = PORTB;
+if ((puertobAnterior & 2) == 0 && (puertobActual & 2) == 2)
+contadorJ1++;
+
+if( (puertobAnterior & 4) == 0 && (puertobActual & 4) == 4)
+contadorJ2++;
+
+
+
+PORTA = valores [contadorJ1];
+PORTC = valores [contadorJ2];
+
+if ( PORTA == 128 || PORTC == 128 ){
+inicio = 0;
+contadorJ1 = 0;
+contadorJ2 = 0;
 }
+
 }
 }
 
@@ -2548,10 +2655,10 @@ if(PORTBbits.RB1 == 1 ) contadorJ1++;
 return;
 }
 
-void semaforo(){
+void semaforo() {
 PORTD = 1;
 _delay((unsigned long)((500)*(4000000/4000.0)));
 PORTD = 2;
 _delay((unsigned long)((500)*(4000000/4000.0)));
-PORTD =4;
+PORTD = 4;
 }
