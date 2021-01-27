@@ -35,8 +35,6 @@
 
 #define _XTAL_FREQ 4000000
 
-
-static char valores[] = {0,1, 2, 4, 8, 16, 32, 64, 128};
 void semaforo(void);
 
 void main(void) {
@@ -48,53 +46,60 @@ void main(void) {
     TRISC = 0;
     TRISD = 0; //PUERTOS A C Y D COMO SALIDAS  y puerto b como entrada]
     PORTA = 0;
-    PORTC  = 0;
+    PORTC = 0;
     PORTD = 0;
-    
+
     OPTION_REGbits.nRBPU = 0;
     char inicio = 0; //variable que se utilizar
-    char contadorJ1 = 0, contadorJ2 = 0;
-    unsigned char puertobAnterior= 1;
-    unsigned char puertobActual = 1;
-    while(1){
+    char puertobAnterior = 1;
+    char puertobActual = 1;
+    while (1) {
         puertobAnterior = puertobActual;
         __delay_us(100);
         puertobActual = PORTB;
-        if ((puertobAnterior & 1) == 0) {
-            if ((puertobActual & 1) == 1) { //  solto el boton
-                inicio = 1; // se da inicio a la secuencia, para que empiece el juego
-                semaforo();
-            }
-            while (inicio) { // entra en esta parte si el valor de inicio es diferente de 0
-                puertobAnterior = puertobActual;
-                __delay_us(100);
-                 puertobActual = PORTB;
-                if ((puertobAnterior & 2) == 0 &&  (puertobActual & 2) == 2) 
-                    contadorJ1++;
-                 
-                if(  (puertobAnterior & 4) == 0 &&  (puertobActual & 4) == 4) 
-                   contadorJ2++; //si se presiono el boton en RB2
-                   
-                
-                
-                PORTA = valores [contadorJ1];
-                PORTC = valores [contadorJ2];
-                
-                if ( PORTA == 128 || PORTC == 128 ){
-                    inicio = 0;
-                    contadorJ1 = 0;
-                    contadorJ2 = 0;
-                }
-                
-            }
+        if ((puertobAnterior & 1) == 0 && (puertobActual & 1) == 1) {
+            //  solto el boton
+            inicio = 1; // se da inicio a la secuencia, para que empiece el juego
+            semaforo();
+            PORTA = 1;
+            PORTC = 1;
         }
+        while (inicio) { // entra en esta parte si el valor de inicio es diferente de 0
+            puertobAnterior = puertobActual;
+            __delay_us(100);
+            puertobActual = PORTB;
+            if ((puertobAnterior & 2) == 0 && (puertobActual & 2) == 2)
+                PORTA = PORTA << 1;
 
+            if ((puertobAnterior & 4) == 0 && (puertobActual & 4) == 4)
+                PORTC = PORTC << 1; //si se presiono el boton en RB2
+
+
+            if (PORTA == 0 || PORTC == 0) {//ya que cuando se le haga 
+                //shift a cualquiera de los 2 y esten en 128 su valor
+                //pasara a estar en 0
+                inicio = 0;
+
+                //se coloca menor como la condicion de ganar ya que 
+                //al pasar de 128  a 0 es cuando se gana con lo que
+                // el que llegue a 0 primero gana con lo que siempre
+                // el valor del puerto ganador sera menor al del otro
+                //puerto
+                if (PORTA < PORTC) PORTDbits.RD3 = 1;
+                else if (PORTC < PORTA) PORTDbits.RD4 = 1;
+                else PORTD |= 24;
+            }
+
+        }
     }
+
+
 
     return;
 }
 
 void semaforo() {
+    PORTA = PORTC = 0;
     PORTD = 1;
     __delay_ms(500);
     PORTD = 2;

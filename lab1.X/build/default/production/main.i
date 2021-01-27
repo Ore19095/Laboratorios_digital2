@@ -2593,8 +2593,7 @@ extern __bank0 __bit __timeout;
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
 
-# 39
-static char valores[] = {0,1, 2, 4, 8, 16, 32, 64, 128};
+# 38
 void semaforo(void);
 
 void main(void) {
@@ -2612,8 +2611,8 @@ PORTD = 0;
 OPTION_REGbits.nRBPU = 0;
 char inicio = 0;
 char contadorJ1 = 0, contadorJ2 = 0;
-unsigned char puertobAnterior= 1;
-unsigned char puertobActual = 1;
+char puertobAnterior= 1;
+char puertobActual = 1;
 while(1){
 puertobAnterior = puertobActual;
 _delay((unsigned long)((100)*(4000000/4000000.0)));
@@ -2622,40 +2621,41 @@ if ((puertobAnterior & 1) == 0) {
 if ((puertobActual & 1) == 1) {
 inicio = 1;
 semaforo();
+PORTA = 1;
+PORTC = 1;
 }
 while (inicio) {
 puertobAnterior = puertobActual;
 _delay((unsigned long)((100)*(4000000/4000000.0)));
 puertobActual = PORTB;
 if ((puertobAnterior & 2) == 0 && (puertobActual & 2) == 2)
-contadorJ1++;
+PORTA = PORTA << 1;
 
 if( (puertobAnterior & 4) == 0 && (puertobActual & 4) == 4)
-contadorJ2++;
+PORTC = PORTC << 1 ;
 
 
+if ( PORTA == 0 || PORTC == 0 ){
 
-PORTA = valores [contadorJ1];
-PORTC = valores [contadorJ2];
 
-if ( PORTA == 128 || PORTC == 128 ){
 inicio = 0;
-contadorJ1 = 0;
-contadorJ2 = 0;
+
+# 89
+if ( PORTA < PORTC ) PORTDbits.RD3 = 1;
+else if( PORTC < PORTA ) PORTDbits.RD4 = 1;
+else PORTD |= 24;
 }
 
 }
 }
 
 }
-
-
-
 
 return;
 }
 
 void semaforo() {
+PORTA = PORTC = 0;
 PORTD = 1;
 _delay((unsigned long)((500)*(4000000/4000.0)));
 PORTD = 2;
