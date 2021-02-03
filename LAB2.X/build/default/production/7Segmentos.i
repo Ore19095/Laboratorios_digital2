@@ -15,7 +15,7 @@
 
 
 # 1 "./7Segmentos.h" 1
-# 19 "./7Segmentos.h"
+# 65 "./7Segmentos.h"
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2496,7 +2496,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 19 "./7Segmentos.h" 2
+# 65 "./7Segmentos.h" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2631,11 +2631,19 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 20 "./7Segmentos.h" 2
+# 66 "./7Segmentos.h" 2
 
-void init7S();
+void init7S(uint8_t*);
+void displayValue(uint8_t);
+void isrTimer0(void);
 # 8 "7Segmentos.c" 2
-# 20 "7Segmentos.c"
+
+
+
+
+
+
+
 static uint8_t tableDisplay[] = { 0b00111111,
                                  0b00000110,
                                  0b01011011,
@@ -2661,15 +2669,24 @@ __bit* multiplexors[2];
 
 uint8_t* displayPort;
 uint8_t displayDigits[2];
+uint8_t value;
 
-void init7S(uint8_t* port, __bit* pines[]){
+
+void init7S(uint8_t* port){
 
 
     displayPort = port;
 
-    for(uint8_t i = 0; i<2 ; i++) {
-        multiplexors[i]= pines[i];
-    }
+
+
+
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 1;
+
+    TMR0 = 6;
+
+    INTCONbits.TMR0IF = 1;
     return;
 }
 
@@ -2684,4 +2701,36 @@ void displayValue(uint8_t valor){
 
 
 
+}
+
+void isrTimer0(){
+
+    if(INTCONbits.TMR0IF){
+
+
+        switch(value){
+            case 0:
+                RA2 = 0;
+                RA3 =0;
+                *displayPort = tableDisplay[displayDigits[0]];
+                RA2= 1;
+                value++;
+                break;
+            case 1:
+                RA2 = 0;
+                RA3 =0;
+                *displayPort = tableDisplay[displayDigits[1]];
+                RA3= 1;
+                value--;
+                break;
+        }
+
+
+
+
+
+        INTCONbits.TMR0IF = 0;
+
+    }
+    return;
 }

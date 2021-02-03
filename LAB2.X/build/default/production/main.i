@@ -30,11 +30,6 @@
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
 
-
-
-
-
-
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2515,7 +2510,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 28 "main.c" 2
+# 23 "main.c" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2650,7 +2645,12 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 29 "main.c" 2
+# 24 "main.c" 2
+
+
+
+
+
 
 # 1 "./ADC.h" 1
 # 37 "./ADC.h"
@@ -2662,8 +2662,16 @@ uint8_t* readADC(uint8_t pin );
 void isrADC(void);
 # 30 "main.c" 2
 
+# 1 "./7Segmentos.h" 1
+# 66 "./7Segmentos.h"
+# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
+# 66 "./7Segmentos.h" 2
 
-
+void init7S(uint8_t*);
+void displayValue(uint8_t);
+void isrTimer0(void);
+# 31 "main.c" 2
+# 45 "main.c"
 volatile uint16_t micros = 0;
 volatile uint16_t timeB1 = 0, timeB2=0;
 volatile uint8_t portbAnterior = 255;
@@ -2692,18 +2700,19 @@ void main(void) {
 
 
     initADC();
+    init7S(&PORTC);
 
     uint8_t* adc0;
     while(1){
         adc0 = readADC(0);
-        PORTC = *adc0;
+        displayValue(*adc0);
     }
 
     return;
 }
 
 void __attribute__((picinterrupt(("")))) isr(void){
-    if (INTCONbits.RBIF == 1 ){
+    if (INTCONbits.RBIF){
         portbAnterior = portbActual;
         portbActual = PORTB;
 
@@ -2727,11 +2736,12 @@ void __attribute__((picinterrupt(("")))) isr(void){
         INTCONbits.RBIF = 0;
     }
 
-     if (PIR1bits.TMR2IF ==1){
+     if (PIR1bits.TMR2IF){
         PIR1bits.TMR2IF = 0;
         micros+= 50;
     }
 
     isrADC();
+    isrTimer0();
     return;
 }

@@ -1,4 +1,43 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"1352 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1352:     struct {
+[s S50 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . PS PSA T0SE T0CS INTEDG nRBPU ]
+"1360
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1360:     struct {
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . PS0 PS1 PS2 ]
+"1351
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1351: typedef union {
+[u S49 `S50 1 `S51 1 ]
+[n S49 . . . ]
+"1366
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1366: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x081)));
+[v _OPTION_REGbits `VS49 ~T0 @X0 0 e@129 ]
+"59
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
+[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"465
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 465:     struct {
+[s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S16 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
+"475
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 475:     struct {
+[s S17 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S17 . . TMR0IF . TMR0IE ]
+"464
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 464: typedef union {
+[u S15 `S16 1 `S17 1 ]
+[n S15 . . . ]
+"482
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 482: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
+[v _INTCONbits `VS15 ~T0 @X0 0 e@11 ]
+"4085
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4085: extern volatile __bit RA2 __attribute__((address(0x2A)));
+[v _RA2 `Vb ~T0 @X0 0 e@42 ]
+"4088
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4088: extern volatile __bit RA3 __attribute__((address(0x2B)));
+[v _RA3 `Vb ~T0 @X0 0 e@43 ]
 "54 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -233,7 +272,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"20 7Segmentos.c
+"15 7Segmentos.c
 [v _tableDisplay `uc ~T0 @X0 -> 16 `i s ]
 [i _tableDisplay
 :U ..
@@ -255,52 +294,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 113 `i `uc
 ..
 ]
-"41
+"36
 [v _multiplexors `*b ~T0 @X0 -> 2 `i e ]
-"43
+"38
 [v _displayPort `*uc ~T0 @X0 1 e ]
-"44
+"39
 [v _displayDigits `uc ~T0 @X0 -> 2 `i e ]
-"46
-[v _init7S `(v ~T0 @X0 1 ef2`*uc`**b ]
+"40
+[v _value `uc ~T0 @X0 1 e ]
+"43
+[v _init7S `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _init7S ]
 [v _port `*uc ~T0 @X0 1 r1 ]
-[v _pines `**b ~T0 @X0 1 r2 ]
 [f ]
-"49
+"46
 [e = _displayPort _port ]
 "51
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 2 `i 139  ]
-[e $U 140  ]
-[e :U 139 ]
-{
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
 "52
-[e = *U + &U _multiplexors * -> _i `ux -> -> # *U &U _multiplexors `ui `ux *U + _pines * -> _i `ux -> -> # *U _pines `ui `ux ]
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
 "53
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 2 `i 139  ]
-[e :U 140 ]
-}
-"54
-[e $UE 138  ]
+[e = . . _OPTION_REGbits 0 0 -> -> 1 `i `uc ]
 "55
+[e = _TMR0 -> -> 6 `i `uc ]
+"57
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
+"58
+[e $UE 138  ]
+"59
 [e :UE 138 ]
 }
-"57
+"61
 [v _displayValue `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _displayValue ]
 [v _valor `uc ~T0 @X0 1 r1 ]
 [f ]
-"62
+"66
 [e = *U + &U _displayDigits * -> -> -> 1 `i `ui `ux -> -> # *U &U _displayDigits `ui `ux -> / -> _valor `i -> 16 `i `uc ]
-"63
+"67
 [e = *U + &U _displayDigits * -> -> -> 0 `i `ui `ux -> -> # *U &U _displayDigits `ui `ux -> % -> _valor `i -> 16 `i `uc ]
-"68
-[e :UE 142 ]
+"72
+[e :UE 139 ]
+}
+"74
+[v _isrTimer0 `(v ~T0 @X0 1 ef ]
+{
+[e :U _isrTimer0 ]
+[f ]
+"76
+[e $ ! != -> . . _INTCONbits 1 1 `i -> 0 `i 141  ]
+{
+"79
+[e $U 143  ]
+{
+"80
+[e :U 144 ]
+"81
+[e = _RA2 -> -> 0 `i `b ]
+"82
+[e = _RA3 -> -> 0 `i `b ]
+"83
+[e = *U _displayPort *U + &U _tableDisplay * -> *U + &U _displayDigits * -> -> -> 0 `i `ui `ux -> -> # *U &U _displayDigits `ui `ux `ux -> -> # *U &U _tableDisplay `ui `ux ]
+"84
+[e = _RA2 -> -> 1 `i `b ]
+"85
+[e ++ _value -> -> 1 `i `uc ]
+"86
+[e $U 142  ]
+"87
+[e :U 145 ]
+"88
+[e = _RA2 -> -> 0 `i `b ]
+"89
+[e = _RA3 -> -> 0 `i `b ]
+"90
+[e = *U _displayPort *U + &U _tableDisplay * -> *U + &U _displayDigits * -> -> -> 1 `i `ui `ux -> -> # *U &U _displayDigits `ui `ux `ux -> -> # *U &U _tableDisplay `ui `ux ]
+"91
+[e = _RA3 -> -> 1 `i `b ]
+"92
+[e -- _value -> -> 1 `i `uc ]
+"93
+[e $U 142  ]
+"94
+}
+[e $U 142  ]
+[e :U 143 ]
+[e [\ -> _value `i , $ -> 0 `i 144
+ , $ -> 1 `i 145
+ 142 ]
+[e :U 142 ]
+"100
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+"102
+}
+[e :U 141 ]
+"103
+[e $UE 140  ]
+"104
+[e :UE 140 ]
 }

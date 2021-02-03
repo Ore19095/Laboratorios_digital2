@@ -2676,7 +2676,7 @@ uint8_t* readADC(uint8_t pin){
 
 
 void isrADC(){
-    if(PIR1bits.ADIF == 1){
+    if(PIR1bits.ADIF){
         ADC_VALUE[ADCON0bits.CHS] = ADRESH;
         PIR1bits.ADIF = 0;
     }

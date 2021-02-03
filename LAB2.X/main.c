@@ -20,14 +20,26 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
-
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
-#define _XTAL_FREQ 4000000
-
 #include <xc.h>
 #include <stdint.h>
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
+
+#define CHANEL_0 RA1
+#define CHANEL_1 RA2
 #include "ADC.h"
+#include "7Segmentos.h"
+
+
+
+
+#define _XTAL_FREQ 4000000
+// definiciones para lalibreria 7segmentos
+#define SEVEN_SEGMENT_SIZE 2
+
+
+#define FORMAT_DISPLAY hex
+
 
 #define VALUE_TMR2 50
 volatile uint16_t micros = 0; //contador de milisegundos
@@ -58,18 +70,19 @@ void main(void) {
     
     
     initADC(); // inicializar el adc
+    init7S(&PORTC);
     
     uint8_t* adc0;
     while(1){
         adc0 = readADC(0);
-        PORTC = *adc0;
+        displayValue(*adc0);
     }
     
     return;
 }
 
 void __interrupt() isr(void){
-    if (INTCONbits.RBIF == 1 ){
+    if (INTCONbits.RBIF){
         portbAnterior = portbActual;
         portbActual = PORTB;
         
@@ -93,11 +106,12 @@ void __interrupt() isr(void){
         INTCONbits.RBIF = 0;
     }
     
-     if (PIR1bits.TMR2IF ==1){
+     if (PIR1bits.TMR2IF){
         PIR1bits.TMR2IF = 0; 
         micros+= 50; // emtra aqui cada 50 uS
     }
     
     isrADC();
+    isrTimer0();
     return;
 }

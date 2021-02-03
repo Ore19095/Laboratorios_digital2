@@ -7,13 +7,8 @@
 
 #include "7Segmentos.h"
 
-#ifndef SEVEN_SEGMENT_SIZE
-#define SEVEN_SEGMENT_SIZE 2
-#endif
 
-#ifndef FORMAT_DISPLAY
-#define FORMAT_DISPLAY hex
-#endif
+
 
 #if FORMAT_DISPLAY == hex
 
@@ -42,15 +37,24 @@ __bit* multiplexors[SEVEN_SEGMENT_SIZE]; //arreglo que contiene referencia
 //los pines a usar
 uint8_t* displayPort;
 uint8_t displayDigits[SEVEN_SEGMENT_SIZE]; // digitos a mostrar
+uint8_t value;
 
-void init7S(uint8_t* port, __bit* pines[]){
+
+void init7S(uint8_t* port){
     //se debe de pasar por parametro el numero de 7segmentos a usar y el 
     //puerto a
     displayPort = port;
     // se asigan los valores
-    for(uint8_t i = 0; i<SEVEN_SEGMENT_SIZE ; i++) {
-        multiplexors[i]= pines[i];
-    }
+    
+    
+    // aqui se inicializa el timer 0, 
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = TMR0_PS; // se coloca el prescaler necesario para que 
+                                  // la interrupcion suceda cada 1 ms aprox
+    TMR0 = TMR0_INIT_VALUE;
+    
+    INTCONbits.TMR0IF = 1; //se coloca en 1 la interrupcu
     return;
 }
 
@@ -65,4 +69,36 @@ void displayValue(uint8_t valor){
     #endif
 #endif
     
+}
+
+void isrTimer0(){
+   
+    if(INTCONbits.TMR0IF){
+#if SEVEN_SEGMENT_SIZE == 2
+        
+        switch(value){
+            case 0:
+                CHANEL_0 = 0;
+                CHANEL_1 =0; //se apagan los displays
+                *displayPort = tableDisplay[displayDigits[0]];
+                CHANEL_0= 1;
+                value++;// es 1 ahora
+                break;
+            case 1:
+                CHANEL_0 = 0;
+                CHANEL_1 =0; //se apagan los displays
+                *displayPort = tableDisplay[displayDigits[1]];
+                CHANEL_1= 1;
+                value--; //vuelve a 0
+                break;
+        }
+        
+#endif
+        
+        
+        
+        INTCONbits.TMR0IF = 0;
+        
+    }
+    return;
 }

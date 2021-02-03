@@ -52,7 +52,7 @@ uint8_t* readADC(uint8_t pin){
 // para evitar conflictos de vectores de interrupcion llame a esta funcion
 // dentro de la funcion de interrupcion
 void isrADC(){
-    if(PIR1bits.ADIF == 1){
+    if(PIR1bits.ADIF){
         ADC_VALUE[ADCON0bits.CHS] = ADRESH;
         PIR1bits.ADIF = 0;
     }
