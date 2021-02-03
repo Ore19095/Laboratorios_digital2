@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "7Segmentos.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
+# 1 "7Segmentos.c" 2
 
 
 
@@ -14,8 +14,8 @@
 
 
 
-# 1 "./ADC.h" 1
-# 36 "./ADC.h"
+# 1 "./7Segmentos.h" 1
+# 19 "./7Segmentos.h"
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2496,7 +2496,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 36 "./ADC.h" 2
+# 19 "./7Segmentos.h" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2631,54 +2631,57 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 37 "./ADC.h" 2
+# 20 "./7Segmentos.h" 2
 
-void initADC(void);
-uint8_t* readADC(uint8_t pin );
-void isrADC(void);
-# 8 "ADC.c" 2
-
-# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
-# 9 "ADC.c" 2
-# 20 "ADC.c"
-uint8_t ADC_VALUE[12];
-
-
-void initADC(){
-
-
-
-
-
-
-    ADCON0bits.ADCS = 1;
-
-
+void init7S();
+# 8 "7Segmentos.c" 2
+# 20 "7Segmentos.c"
+static uint8_t tableDisplay[] = { 0b00111111,
+                                 0b00000110,
+                                 0b01011011,
+                                 0b01001111,
+                                 0b01100110,
+                                 0b01101101,
+                                 0b01111101,
+                                 0b00000111,
+                                 0b01111111,
+                                 0b01101111,
+                                 0b01110111,
+                                 0b01111100,
+                                 0b01011000,
+                                 0b01011110,
+                                 0b01111001,
+                                 0b01110001};
 
 
-    PIE1bits.ADIE = 1;
 
-    ADCON1bits.ADFM = 0;
-    ADCON1bits.VCFG1 = 0;
-    ADCON1bits.VCFG0 = 0;
-    ADCON0bits.ADON = 1;
+
+
+__bit* multiplexors[2];
+
+uint8_t* displayPort;
+uint8_t displayDigits[2];
+
+void init7S(uint8_t* port, __bit* pines[]){
+
+
+    displayPort = port;
+
+    for(uint8_t i = 0; i<2 ; i++) {
+        multiplexors[i]= pines[i];
+    }
     return;
 }
 
-uint8_t* readADC(uint8_t pin){
-    if (ADCON0bits.GO ==0 ){
-         ADCON0bits.CHS = pin;
-        _delay((unsigned long)((3)*(4000000/4000000.0)));
-        ADCON0bits.GO = 1;
-    }
-    return &ADC_VALUE[pin];
-}
+void displayValue(uint8_t valor){
 
 
-void isrADC(){
-    if(PIR1bits.ADIF == 1){
-        ADC_VALUE[ADCON0bits.CHS] = ADRESH;
-        PIR1bits.ADIF = 0;
-    }
-    return;
+
+
+    displayDigits[1] = valor/16;
+    displayDigits[0] = valor%16;
+
+
+
+
 }

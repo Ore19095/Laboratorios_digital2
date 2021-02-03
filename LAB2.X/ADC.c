@@ -46,9 +46,8 @@ uint8_t* readADC(uint8_t pin){
          ADCON0bits.CHS = pin;
         __delay_us(3);
         ADCON0bits.GO = 1; // inicia la conversion
-    
     }
-    return ADC_VALUE; // retorna el valor para tener acceso al valor
+    return &ADC_VALUE[pin]; // retorna el valor para tener acceso al valor
 }
 // para evitar conflictos de vectores de interrupcion llame a esta funcion
 // dentro de la funcion de interrupcion

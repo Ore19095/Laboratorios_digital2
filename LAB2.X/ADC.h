@@ -1,34 +1,35 @@
 
-/* Microchip Technology Inc. and its subsidiaries.  You may use this software 
- * and any derivatives exclusively with Microchip products. 
- * 
- * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".  NO WARRANTIES, WHETHER 
- * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
- * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A 
- * PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION 
- * WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION. 
- *
- * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
- * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
- * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
- * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE 
- * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS 
- * IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF 
- * ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *
- * MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE 
- * TERMS. 
- */
 
 /* 
  * File:   
  * Author: Angel Orellana 
  * Comments:
  * Revision history: primera version para pic 16F887
+ 
+ * 
+ * Cuando se desee utilizar esta libreria se debera de definir la cantidad
+ * de canales de ADC que posea el pic, ademas de esto es recomendable definir
+ * el valor de _XTAL_FREQ y colocar el valor que se utilizara debido a que 
+ * en base a esa definicion se definira el valor de frecuencia que recibira 
+ * el ADC
+ * 
+ * initADC()
+ *  Esta funcion inicializa el adc asi como la interrupcion respectiva, no 
+ * requiere parametros
+ * 
+ * readADC()
+ *  el parametro pin es el que determina el canal que sera leido en el adc
+ * este valor se coloca directamente en los bits CHS y retorna un puntero a la 
+ * direccion de memoria en la cual se colocara el valor una vez se haya
+ * completado la lectura, ademas para que se de la lectura, se debe de 
+ * configurar el pin como una entrada analogica 
+ * 
+ 
+ * isrADC()
+ * esta funcion debe ser colocada en el vector de interrupcion correcpondiente
+ * en el adc, no se especifica directamente para evitar errores. 
  */
 
-// This is a guard condition so that contents of this file are not included
-// more than once.  
 #ifndef ADC_H 
 #define	ADC_H 
 

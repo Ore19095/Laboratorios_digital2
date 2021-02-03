@@ -20,7 +20,7 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
-#define	7SEGMENTOS_H
+
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 #define _XTAL_FREQ 4000000
@@ -62,7 +62,7 @@ void main(void) {
     uint8_t* adc0;
     while(1){
         adc0 = readADC(0);
-        PORTC = adc0[0];
+        PORTC = *adc0;
     }
     
     return;
