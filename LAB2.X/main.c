@@ -76,6 +76,8 @@ void main(void) {
     while(1){
         adc0 = readADC(0);
         displayValue(*adc0);
+        RA1 = (*adc0 > PORTD);
+        
     }
     
     return;
