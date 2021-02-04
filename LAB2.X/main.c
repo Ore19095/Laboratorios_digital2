@@ -76,7 +76,8 @@ void main(void) {
     while(1){
         adc0 = readADC(0);
         displayValue(*adc0);
-        RA1 = (*adc0 > PORTD);
+        RA1 = (*adc0 > PORTD); // si la expresion es verdadera sera un 1 y 
+        //si es falsa sera un cero
         
     }
     
@@ -91,8 +92,8 @@ void __interrupt() isr(void){
         if ((portbAnterior & 1) == 0 &&  (portbActual & 1) == 1){
             // se entra si el valor anterior era 0
             if (micros - timeB1 >= 50){
-                // si la resta entre ambos es mas grande que 1 esto significa
-                //que desde la ultima vez que se entro ham pasado mas de 1 ms
+                // si la resta entre ambos es mas grande que 50 esto significa
+                //que desde la ultima vez que se entro han pasado mas de 50 us
                 timeB1 = micros;
                 PORTD++;
             }
