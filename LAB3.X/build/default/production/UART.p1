@@ -1,77 +1,77 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"1602 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
-[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1664
-[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
-[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
-"3387
-[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
-[v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
-"3449
-[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3449: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
-[v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
-"58 ./LCD8bits.h
-[; ;./LCD8bits.h: 58:  void LcdInit(void);
-[v _LcdInit `(v ~T0 @X0 0 ef ]
-"38 ./ADC.h
-[; ;./ADC.h: 38: void initADC(void);
-[v _initADC `(v ~T0 @X0 0 ef ]
-"31 ./UART.h
-[; ;./UART.h: 31: void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
-[v _UARTInit `(v ~T0 @X0 0 ef2`Cul`Cuc ]
-"39 ./ADC.h
-[; ;./ADC.h: 39: uint8_t* readADC(uint8_t pin );
-[v _readADC `(*uc ~T0 @X0 0 ef1`uc ]
-"57 ./LCD8bits.h
-[; ;./LCD8bits.h: 57:  void LcdSetCursor(char a, char b);
-[v _LcdSetCursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"60
-[; ;./LCD8bits.h: 60:  void LcdWriteString( const char *a);
-[v _LcdWriteString `(v ~T0 @X0 0 ef1`*Cuc ]
-"27 main.c
-[; ;main.c: 27: char* analogToString(uint8_t value);
-[v _analogToString `(*uc ~T0 @X0 0 ef1`uc ]
-"44 ./UART.h
-[; ;./UART.h: 44: void UARTSendString(const char* str, const uint8_t max_length);
-[v _UARTSendString `(v ~T0 @X0 0 ef2`*Cuc`Cuc ]
-"50
-[; ;./UART.h: 50: uint8_t UARTDataReady();
-[v _UARTDataReady `(uc ~T0 @X0 0 e? ]
-"56
-[; ;./UART.h: 56: char UARTReadChar();
-[v _UARTReadChar `(uc ~T0 @X0 0 e? ]
-"28 main.c
-[; ;main.c: 28: char* intToString(uint8_t value);
-[v _intToString `(*uc ~T0 @X0 0 ef1`uc ]
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"40 ./ADC.h
-[; ;./ADC.h: 40: void isrADC(void);
-[v _isrADC `(v ~T0 @X0 0 ef ]
-"8 main.c
-[p x FOSC  =  EXTRC_CLKOUT ]
-"9
-[p x WDTE  =  OFF        ]
-"10
-[p x PWRTE  =  OFF       ]
-"11
-[p x MCLRE  =  OFF       ]
-"12
-[p x CP  =  OFF          ]
-"13
-[p x CPD  =  OFF         ]
-"14
-[p x BOREN  =  OFF       ]
-"15
-[p x IESO  =  OFF        ]
-"16
-[p x FCMEN  =  OFF       ]
-"17
-[p x LVP  =  OFF         ]
-"20
-[p x BOR4V  =  BOR40V    ]
+"2642 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2642: extern volatile unsigned char SPBRG __attribute__((address(0x099)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
+"2562
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2562:     struct {
+[s S99 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S99 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"2572
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2572:     struct {
+[s S100 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S100 . TXD8 . nTX8 ]
+"2577
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2577:     struct {
+[s S101 :6 `uc 1 :1 `uc 1 ]
+[n S101 . . TX8_9 ]
+"2561
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2561: typedef union {
+[u S98 `S99 1 `S100 1 `S101 1 ]
+[n S98 . . . . ]
+"2582
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2582: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0x098)));
+[v _TXSTAbits `VS98 ~T0 @X0 0 e@152 ]
+"1044
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1044:     struct {
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"1054
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1054:     struct {
+[s S38 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S38 . RCD8 . RC9 ]
+"1059
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1059:     struct {
+[s S39 :6 `uc 1 :1 `uc 1 ]
+[n S39 . . nRC8 ]
+"1063
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1063:     struct {
+[s S40 :6 `uc 1 :1 `uc 1 ]
+[n S40 . . RC8_9 ]
+"1043
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1043: typedef union {
+[u S36 `S37 1 `S38 1 `S39 1 `S40 1 ]
+[n S36 . . . . . ]
+"1068
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1068: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0x018)));
+[v _RCSTAbits `VS36 ~T0 @X0 0 e@24 ]
+"1546
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1546:     struct {
+[s S57 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S57 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1545
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1545: typedef union {
+[u S56 `S57 1 ]
+[n S56 . . ]
+"1557
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1557: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x087)));
+[v _TRISCbits `VS56 ~T0 @X0 0 e@135 ]
+"1133
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1133: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"543
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1140
+[; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
 "54 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -306,270 +306,220 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"31 main.c
-[; ;main.c: 31: int main(){
-[v _main `(i ~T0 @X0 1 ef ]
+"8 UART.c
+[; ;UART.c: 8: void UARTInit(const uint32_t baud_rate, const uint8_t BRGH) {
+[v _UARTInit `(v ~T0 @X0 1 ef2`Cul`Cuc ]
 {
-[e :U _main ]
+[e :U _UARTInit ]
+[v _baud_rate `Cul ~T0 @X0 1 r1 ]
+[v _BRGH `Cuc ~T0 @X0 1 r2 ]
 [f ]
-"32
-[; ;main.c: 32:   TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
-"33
-[; ;main.c: 33:   TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
-"34
-[; ;main.c: 34:   ANSEL = 3;
-[e = _ANSEL -> -> 3 `i `uc ]
-"35
-[; ;main.c: 35:   ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
-"36
-[; ;main.c: 36:   LcdInit();
-[e ( _LcdInit ..  ]
-"37
-[; ;main.c: 37:   initADC();
-[e ( _initADC ..  ]
-"38
-[; ;main.c: 38:   UARTInit(9600,1);
-[e ( _UARTInit (2 , -> -> -> 9600 `i `l `ul -> -> 1 `i `uc ]
-"39
-[; ;main.c: 39:   volatile char *val;
-[v _val `*Vuc ~T0 @X0 1 a ]
-"40
-[; ;main.c: 40:   volatile char *val2;
-[v _val2 `*Vuc ~T0 @X0 1 a ]
-"41
-[; ;main.c: 41:   char *contadorString;
-[v _contadorString `*uc ~T0 @X0 1 a ]
-"42
-[; ;main.c: 42:   uint8_t *adc1;
-[v _adc1 `*uc ~T0 @X0 1 a ]
-"43
-[; ;main.c: 43:   uint8_t *adc2;
-[v _adc2 `*uc ~T0 @X0 1 a ]
-"45
-[; ;main.c: 45:   uint8_t contador = 0;
-[v _contador `uc ~T0 @X0 1 a ]
-[e = _contador -> -> 0 `i `uc ]
-"46
-[; ;main.c: 46:   while(1){
-[e :U 140 ]
+"10
+[; ;UART.c: 10:     if (BRGH == 0) {
+[e $ ! == -> _BRGH `i -> 0 `i 139  ]
 {
-"48
-[; ;main.c: 48:     adc1 = readADC(0);
-[e = _adc1 ( _readADC (1 -> -> 0 `i `uc ]
-"50
-[; ;main.c: 50:     LcdSetCursor(1,1);
-[e ( _LcdSetCursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"51
-[; ;main.c: 51:     adc2 = readADC(1);
-[e = _adc2 ( _readADC (1 -> -> 1 `i `uc ]
-"52
-[; ;main.c: 52:     LcdWriteString("S1:   S2:   S3:");
-[e ( _LcdWriteString (1 :s 1C ]
-"53
-[; ;main.c: 53:     LcdSetCursor(2,1);
-[e ( _LcdSetCursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"55
-[; ;main.c: 55:     val = analogToString(*adc1);
-[e = _val -> ( _analogToString (1 *U _adc1 `*Vuc ]
-"56
-[; ;main.c: 56:     LcdWriteString(val);
-[e ( _LcdWriteString (1 -> _val `*Cuc ]
-"57
-[; ;main.c: 57:     LcdWriteString("V ");
-[e ( _LcdWriteString (1 :s 2C ]
-"59
-[; ;main.c: 59:     UARTSendString(val,6);
-[e ( _UARTSendString (2 , -> _val `*Cuc -> -> 6 `i `uc ]
-"60
-[; ;main.c: 60:     UARTSendString("V ",3);
-[e ( _UARTSendString (2 , :s 3C -> -> 3 `i `uc ]
-"61
-[; ;main.c: 61:     val2 = analogToString(*adc2);
-[e = _val2 -> ( _analogToString (1 *U _adc2 `*Vuc ]
-"62
-[; ;main.c: 62:     LcdWriteString(val2);
-[e ( _LcdWriteString (1 -> _val2 `*Cuc ]
-"63
-[; ;main.c: 63:     LcdWriteString("V ");
-[e ( _LcdWriteString (1 :s 4C ]
-"66
-[; ;main.c: 66:     UARTSendString(val,6);
-[e ( _UARTSendString (2 , -> _val `*Cuc -> -> 6 `i `uc ]
-"67
-[; ;main.c: 67:     UARTSendString("V ",3);
-[e ( _UARTSendString (2 , :s 5C -> -> 3 `i `uc ]
-"72
-[; ;main.c: 72:     if (UARTDataReady()){
-[e $ ! != -> ( _UARTDataReady ..  `i -> 0 `i 142  ]
-{
-"73
-[; ;main.c: 73:         char entrada =UARTReadChar();
-[v _entrada `uc ~T0 @X0 1 a ]
-[e = _entrada ( _UARTReadChar ..  ]
-"74
-[; ;main.c: 74:         if( entrada == '+'){
-[e $ ! == -> _entrada `ui -> 43 `ui 143  ]
-{
-"75
-[; ;main.c: 75:             contador++;
-[e ++ _contador -> -> 1 `i `uc ]
-"76
-[; ;main.c: 76:         }
+"11
+[; ;UART.c: 11:         SPBRG = 4000000/(64*baud_rate) - 1;
+[e = _SPBRG -> - / -> -> 4000000 `l `ul * -> -> -> 64 `i `l `ul _baud_rate -> -> -> 1 `i `l `ul `uc ]
+"12
+[; ;UART.c: 12:         TXSTAbits.BRGH = 0;
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+"13
+[; ;UART.c: 13:     } else {
 }
-[e $U 144  ]
-"77
-[; ;main.c: 77:         else if (entrada =='-'){
-[e :U 143 ]
-[e $ ! == -> _entrada `ui -> 45 `ui 145  ]
-{
-"78
-[; ;main.c: 78:             contador--;
-[e -- _contador -> -> 1 `i `uc ]
-"79
-[; ;main.c: 79:         }
-}
-[e :U 145 ]
-[e :U 144 ]
-"80
-[; ;main.c: 80:     }
-}
-[e :U 142 ]
-"82
-[; ;main.c: 82:     contadorString = intToString(contador);
-[e = _contadorString ( _intToString (1 _contador ]
-"83
-[; ;main.c: 83:     LcdWriteString(contadorString);
-[e ( _LcdWriteString (1 -> _contadorString `*Cuc ]
-"85
-[; ;main.c: 85:   }
-}
-[e :U 139 ]
 [e $U 140  ]
-[e :U 141 ]
-"86
-[; ;main.c: 86:   return 0;
-[e ) -> 0 `i ]
-[e $UE 138  ]
-"87
-[; ;main.c: 87: }
+[e :U 139 ]
+{
+"14
+[; ;UART.c: 14:         SPBRG = 4000000/(16*baud_rate) - 1;
+[e = _SPBRG -> - / -> -> 4000000 `l `ul * -> -> -> 16 `i `l `ul _baud_rate -> -> -> 1 `i `l `ul `uc ]
+"15
+[; ;UART.c: 15:         TXSTAbits.BRGH = 1;
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+"16
+[; ;UART.c: 16:     }
+}
+[e :U 140 ]
+"19
+[; ;UART.c: 19:     TXSTAbits.TX9 = 0;
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+"20
+[; ;UART.c: 20:     TXSTAbits.TXEN = 1;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+"21
+[; ;UART.c: 21:     TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"24
+[; ;UART.c: 24:     RCSTAbits.SPEN = 1;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+"25
+[; ;UART.c: 25:     RCSTAbits.RX9 = 0;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+"26
+[; ;UART.c: 26:     RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"27
+[; ;UART.c: 27:     RCSTAbits.FERR = 0;
+[e = . . _RCSTAbits 0 2 -> -> 0 `i `uc ]
+"28
+[; ;UART.c: 28:     RCSTAbits.OERR = 0;
+[e = . . _RCSTAbits 0 1 -> -> 0 `i `uc ]
+"31
+[; ;UART.c: 31:     TRISCbits.TRISC7 = 1;
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+"32
+[; ;UART.c: 32:     TRISCbits.TRISC6 = 0;
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+"33
+[; ;UART.c: 33: }
 [e :UE 138 ]
 }
+"39
+[; ;UART.c: 39: void UARTSendChar(const char c) {
+[v _UARTSendChar `(v ~T0 @X0 1 ef1`Cuc ]
+{
+[e :U _UARTSendChar ]
+[v _c `Cuc ~T0 @X0 1 r1 ]
+[f ]
+"40
+[; ;UART.c: 40:     while (TXSTAbits.TRMT == 0);
+[e $U 142  ]
+[e :U 143 ]
+[e :U 142 ]
+[e $ == -> . . _TXSTAbits 0 1 `i -> 0 `i 143  ]
+[e :U 144 ]
+"41
+[; ;UART.c: 41:     TXREG = c;
+[e = _TXREG -> _c `uc ]
+"42
+[; ;UART.c: 42: }
+[e :UE 141 ]
+}
+"49
+[; ;UART.c: 49: void UARTSendString(const char* str, const uint8_t max_length) {
+[v _UARTSendString `(v ~T0 @X0 1 ef2`*Cuc`Cuc ]
+{
+[e :U _UARTSendString ]
+[v _str `*Cuc ~T0 @X0 1 r1 ]
+[v _max_length `Cuc ~T0 @X0 1 r2 ]
+[f ]
+"50
+[; ;UART.c: 50:     int i = 0;
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+"51
+[; ;UART.c: 51:     for (i=0 ; i<max_length && str[i]!='\0' ; i++) {
+{
+[e = _i -> 0 `i ]
+[e $U 149  ]
+[e :U 146 ]
+{
+"52
+[; ;UART.c: 52:         UARTSendChar(str[i]);
+[e ( _UARTSendChar (1 *U + _str * -> _i `x -> -> # *U _str `i `x ]
+"53
+[; ;UART.c: 53:     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 149 ]
+[e $ && < _i -> _max_length `i != -> *U + _str * -> _i `x -> -> # *U _str `i `x `ui -> 0 `ui 146  ]
+[e :U 147 ]
+}
+"54
+[; ;UART.c: 54: }
+[e :UE 145 ]
+}
+"60
+[; ;UART.c: 60: uint8_t UARTDataReady() {
+[v _UARTDataReady `(uc ~T0 @X0 1 ef ]
+{
+[e :U _UARTDataReady ]
+[f ]
+"61
+[; ;UART.c: 61:     return PIR1bits.RCIF;
+[e ) . . _PIR1bits 0 5 ]
+[e $UE 150  ]
+"62
+[; ;UART.c: 62: }
+[e :UE 150 ]
+}
+"68
+[; ;UART.c: 68: char UARTReadChar() {
+[v _UARTReadChar `(uc ~T0 @X0 1 ef ]
+{
+[e :U _UARTReadChar ]
+[f ]
+"69
+[; ;UART.c: 69:     while (!UARTDataReady());
+[e $U 152  ]
+[e :U 153 ]
+[e :U 152 ]
+[e $ ! != -> ( _UARTDataReady ..  `i -> 0 `i 153  ]
+[e :U 154 ]
+"70
+[; ;UART.c: 70:     return RCREG;
+[e ) -> _RCREG `uc ]
+[e $UE 151  ]
+"71
+[; ;UART.c: 71: }
+[e :UE 151 ]
+}
+"80
+[; ;UART.c: 80: uint8_t UARTReadString(char *buf, uint8_t max_length) {
+[v _UARTReadString `(uc ~T0 @X0 1 ef2`*uc`uc ]
+{
+[e :U _UARTReadString ]
+[v _buf `*uc ~T0 @X0 1 r1 ]
+[v _max_length `uc ~T0 @X0 1 r2 ]
+[f ]
+"81
+[; ;UART.c: 81:     uint8_t i = 0;
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+"82
+[; ;UART.c: 82:     char tmp = 1;
+[v _tmp `uc ~T0 @X0 1 a ]
+[e = _tmp -> -> 1 `i `uc ]
+"83
+[; ;UART.c: 83:     for (i=0 ; i<max_length-1 ; i++) {
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 159  ]
+[e :U 156 ]
+{
+"84
+[; ;UART.c: 84:         tmp = UARTReadChar();
+[e = _tmp ( _UARTReadChar ..  ]
+"86
+[; ;UART.c: 86:         if (tmp == '\0' || tmp == '\n' || tmp == '\r') {
+[e $ ! || || == -> _tmp `ui -> 0 `ui == -> _tmp `ui -> 10 `ui == -> _tmp `ui -> 13 `ui 160  ]
+{
+"87
+[; ;UART.c: 87:             break;
+[e $U 157  ]
+"88
+[; ;UART.c: 88:         }
+}
+[e :U 160 ]
 "89
-[; ;main.c: 89: char* analogToString(uint8_t value){
-[v _analogToString `(*uc ~T0 @X0 1 ef1`uc ]
-{
-[e :U _analogToString ]
-[v _value `uc ~T0 @X0 1 r1 ]
-[f ]
+[; ;UART.c: 89:         buf[i] = tmp;
+[e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux _tmp ]
 "90
-[; ;main.c: 90:     float valor = value *0.019;
-[v _valor `f ~T0 @X0 1 a ]
-[e = _valor -> * -> -> _value `i `d .0.019 `f ]
-"91
-[; ;main.c: 91:     char string[5];
-[v _string `uc ~T0 @X0 -> 5 `i a ]
+[; ;UART.c: 90:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 159 ]
+[e $ < -> _i `i - -> _max_length `i -> 1 `i 156  ]
+[e :U 157 ]
+}
 "92
-[; ;main.c: 92:     uint8_t entero = valor;
-[v _entero `uc ~T0 @X0 1 a ]
-[e = _entero -> _valor `uc ]
+[; ;UART.c: 92:     buf[i+1] = '\0';
+[e = *U + _buf * -> + -> _i `i -> 1 `i `x -> -> # *U _buf `i `x -> -> 0 `ui `uc ]
 "94
-[; ;main.c: 94:     string[0] = entero + 48;
-[e = *U + &U _string * -> -> -> 0 `i `ui `ux -> -> # *U &U _string `ui `ux -> + -> _entero `i -> 48 `i `uc ]
+[; ;UART.c: 94:     return i;
+[e ) _i ]
+[e $UE 155  ]
 "95
-[; ;main.c: 95:     string[1]= '.';
-[e = *U + &U _string * -> -> -> 1 `i `ui `ux -> -> # *U &U _string `ui `ux -> -> 46 `ui `uc ]
-"96
-[; ;main.c: 96:     valor =( valor - entero);
-[e = _valor - _valor -> -> _entero `i `f ]
-"98
-[; ;main.c: 98:     valor*=10;
-[e =* _valor -> -> 10 `i `f ]
-"99
-[; ;main.c: 99:     entero = valor ;
-[e = _entero -> _valor `uc ]
-"100
-[; ;main.c: 100:     string[2] = entero + 48;
-[e = *U + &U _string * -> -> -> 2 `i `ui `ux -> -> # *U &U _string `ui `ux -> + -> _entero `i -> 48 `i `uc ]
-"102
-[; ;main.c: 102:     valor -= entero;
-[e =- _valor -> -> _entero `i `f ]
-"103
-[; ;main.c: 103:     valor*=10;
-[e =* _valor -> -> 10 `i `f ]
-"105
-[; ;main.c: 105:     entero = valor ;
-[e = _entero -> _valor `uc ]
-"106
-[; ;main.c: 106:     string[3] = (entero + 48);
-[e = *U + &U _string * -> -> -> 3 `i `ui `ux -> -> # *U &U _string `ui `ux -> + -> _entero `i -> 48 `i `uc ]
-"107
-[; ;main.c: 107:     string[4] ='\0';
-[e = *U + &U _string * -> -> -> 4 `i `ui `ux -> -> # *U &U _string `ui `ux -> -> 0 `ui `uc ]
-"108
-[; ;main.c: 108:     return string;
-[e ) &U _string ]
-[e $UE 146  ]
-"109
-[; ;main.c: 109: }
-[e :UE 146 ]
+[; ;UART.c: 95: }
+[e :UE 155 ]
 }
-"112
-[; ;main.c: 112: char* intToString(uint8_t value){
-[v _intToString `(*uc ~T0 @X0 1 ef1`uc ]
-{
-[e :U _intToString ]
-[v _value `uc ~T0 @X0 1 r1 ]
-[f ]
-"113
-[; ;main.c: 113:     char valor[4];
-[v _valor `uc ~T0 @X0 -> 4 `i a ]
-"115
-[; ;main.c: 115:     uint8_t entero = value/100;
-[v _entero `uc ~T0 @X0 1 a ]
-[e = _entero -> / -> _value `i -> 100 `i `uc ]
-"116
-[; ;main.c: 116:     valor[0] = entero+48;
-[e = *U + &U _valor * -> -> -> 0 `i `ui `ux -> -> # *U &U _valor `ui `ux -> + -> _entero `i -> 48 `i `uc ]
-"118
-[; ;main.c: 118:     value -= 100*entero;
-[e =- _value -> * -> 100 `i -> _entero `i `uc ]
-"120
-[; ;main.c: 120:     valor[1] = value/10 + 48 ;
-[e = *U + &U _valor * -> -> -> 1 `i `ui `ux -> -> # *U &U _valor `ui `ux -> + / -> _value `i -> 10 `i -> 48 `i `uc ]
-"121
-[; ;main.c: 121:     valor[2] = value%10 + 48;
-[e = *U + &U _valor * -> -> -> 2 `i `ui `ux -> -> # *U &U _valor `ui `ux -> + % -> _value `i -> 10 `i -> 48 `i `uc ]
-"122
-[; ;main.c: 122:     valor[3] = '\0';
-[e = *U + &U _valor * -> -> -> 3 `i `ui `ux -> -> # *U &U _valor `ui `ux -> -> 0 `ui `uc ]
-"124
-[; ;main.c: 124:     return valor;
-[e ) &U _valor ]
-[e $UE 147  ]
-"128
-[; ;main.c: 128: }
-[e :UE 147 ]
-}
-[v $root$_isr `(v ~T0 @X0 0 e ]
-"131
-[; ;main.c: 131: void __attribute__((picinterrupt(("")))) isr(){
-[v _isr `(v ~T1 @X0 1 ef ]
-{
-[e :U _isr ]
-[f ]
-"132
-[; ;main.c: 132:     isrADC();
-[e ( _isrADC ..  ]
-"133
-[; ;main.c: 133: }
-[e :UE 148 ]
-}
-[a 1C 83 49 58 32 32 32 83 50 58 32 32 32 83 51 58 0 ]
-[a 2C 86 32 0 ]
-[a 3C 86 32 0 ]
-[a 4C 86 32 0 ]
-[a 5C 86 32 0 ]

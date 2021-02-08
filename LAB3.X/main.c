@@ -22,32 +22,65 @@
 #include<stdint.h>
 #include "LCD8bits.h"
 #include "ADC.h"
-
+#include "UART.h"
 #define _XTAL_FREQ 4000000
 char* analogToString(uint8_t value);
+char* intToString(uint8_t value);
+
 
 int main(){
-  TRISD = 0x00;
+  TRISD = 0;
   TRISE = 0;
   ANSEL = 3;
   ANSELH = 0;
   LcdInit();
   initADC();
-  char *val;
+  UARTInit(9600,1);
+  volatile char *val;
+  volatile char *val2;
+  char *contadorString;
   uint8_t *adc1;
   uint8_t *adc2;
+  
+  uint8_t contador = 0;
   while(1){
+      //--------- se leen los valors del adc y se escribe en la lcd
     adc1 = readADC(0);
-    LcdClear();
+    //LcdClear();
     LcdSetCursor(1,1); // se deja un momento
     adc2 = readADC(1); //se lee el otro
     LcdWriteString("S1:   S2:   S3:");
     LcdSetCursor(2,1);
+    // ---- aqu se imprimen los valors -----------------
     val = analogToString(*adc1);
     LcdWriteString(val);
     LcdWriteString("V ");
-    val = analogToString(*adc2);
-    LcdWriteString(val);
+    // se envia por uart el valor --
+    UARTSendString(val,6);
+    UARTSendString("V ",3);
+    val2 = analogToString(*adc2);
+    LcdWriteString(val2);
+    LcdWriteString("V ");
+    //-- se enviia de nuevo, puesyo que val y val2 hacen referencia a la misma
+    //variable
+    UARTSendString(val,6);
+    UARTSendString("V ",3);
+    
+    
+    // se verifica si hay algo en el uart 
+    
+    if (UARTDataReady()){
+        char entrada  =UARTReadChar();
+        if( entrada == '+'){
+            contador++;
+        }
+        else if (entrada =='-'){
+            contador--;
+        }
+    }
+    
+    contadorString = intToString(contador);
+    LcdWriteString(contadorString);
     
   }
   return 0;
@@ -74,6 +107,26 @@ char* analogToString(uint8_t value){
     string[4] ='\0';
     return string;
 }
+
+
+char* intToString(uint8_t value){
+    char valor[4];
+    
+    uint8_t entero = value/100; // numeor de centennas 
+    valor[0] = entero+48;
+    
+    value -= 100*entero; // se quitan las decenas
+    
+    valor[1] = value/10 + 48 ; // decenas
+    valor[2] = value%10  + 48;// el resto
+    valor[3] = '\0'; //caracter nulo
+    
+    return valor;
+          
+    
+    
+}
+
 
 void __interrupt() isr(){
     isrADC();

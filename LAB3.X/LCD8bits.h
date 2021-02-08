@@ -57,7 +57,7 @@
  void LcdSetCursor(char a, char b);
  void LcdInit(void);
  void LcdWriteChar(char a);
- void LcdWriteString(char *a);
+ void LcdWriteString( const char *a);
  void LcdShiftRight(void);
  void LcdShiftLeft(void);
  

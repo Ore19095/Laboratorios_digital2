@@ -1,4 +1,4 @@
-# 1 "LCD8bits.c"
+# 1 "UART.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,9 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LCD8bits.c" 2
-# 1 "./LCD8bits.h" 1
-# 34 "./LCD8bits.h"
+# 1 "UART.c" 2
+# 1 "./UART.h" 1
+# 15 "./UART.h"
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2489,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 34 "./LCD8bits.h" 2
+# 15 "./UART.h" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2624,92 +2624,128 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 35 "./LCD8bits.h" 2
-# 55 "./LCD8bits.h"
- void LcdPort(char a);
- void LcdClear(void);
- void LcdSetCursor(char a, char b);
- void LcdInit(void);
- void LcdWriteChar(char a);
- void LcdWriteString( const char *a);
- void LcdShiftRight(void);
- void LcdShiftLeft(void);
-# 1 "LCD8bits.c" 2
+# 16 "./UART.h" 2
+# 31 "./UART.h"
+void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
 
 
-void LcdPort(char value) {
 
 
-    RD0 = value &1;
-    RD1 = (value & 2) >> 1;
-    RD2 = (value & 4) >> 2;
-    RD3 = (value &8) >> 3;
-    RD4 = (value & 16)>>4;
-    RD5 = (value & 32) >> 5 ;
-    RD6 = (value & 64) >> 6;
-    RD7 = (value & 128) >> 7;
-}
 
-void LcdCmd(char value) {
-    RE2 = 0;
-    LcdPort(value);
-    RE0 = 1;
-    _delay((unsigned long)((4)*(4000000/4000.0)));
-    RE0 = 0;
-}
+void UARTSendChar(const char c);
 
-void LcdClear() {
-    LcdCmd(0);
-    LcdCmd(1);
-}
 
-void LcdSetCursor(char row, char column) {
-    switch(row){
-        case 1:
-            LcdCmd(0x80 + column - 1);
-            break;
-        case 2:
-            LcdCmd(0xC0 + column - 1);
-            break;
+
+
+
+
+void UARTSendString(const char* str, const uint8_t max_length);
+
+
+
+
+
+uint8_t UARTDataReady();
+
+
+
+
+
+char UARTReadChar();
+
+
+
+
+
+
+
+uint8_t UARTReadString(char *buf, uint8_t max_length);
+# 1 "UART.c" 2
+
+
+
+
+
+
+
+void UARTInit(const uint32_t baud_rate, const uint8_t BRGH) {
+
+    if (BRGH == 0) {
+        SPBRG = 4000000/(64*baud_rate) - 1;
+        TXSTAbits.BRGH = 0;
+    } else {
+        SPBRG = 4000000/(16*baud_rate) - 1;
+        TXSTAbits.BRGH = 1;
     }
 
+
+    TXSTAbits.TX9 = 0;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+
+
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.CREN = 1;
+    RCSTAbits.FERR = 0;
+    RCSTAbits.OERR = 0;
+
+
+    TRISCbits.TRISC7 = 1;
+    TRISCbits.TRISC6 = 0;
 }
 
-void LcdInit() {
-    LcdPort(0x00);
-    _delay((unsigned long)((20)*(4000000/4000.0)));
-    LcdCmd(0x30);
-    _delay((unsigned long)((5)*(4000000/4000.0)));
-    LcdCmd(0x30);
-    _delay((unsigned long)((11)*(4000000/4000.0)));
-    LcdCmd(0x30);
 
-    LcdCmd(0x38);
-    LcdCmd(0x0C);
-    LcdCmd(0x6);
 
+
+
+void UARTSendChar(const char c) {
+    while (TXSTAbits.TRMT == 0);
+    TXREG = c;
 }
 
-void LcdWriteChar(char value) {
-    RE2 = 1;
-    LcdPort(value);
-    RE0 = 1;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
-    RE0 = 0;
+
+
+
+
+
+void UARTSendString(const char* str, const uint8_t max_length) {
+    int i = 0;
+    for (i=0 ; i<max_length && str[i]!='\0' ; i++) {
+        UARTSendChar(str[i]);
+    }
 }
 
-void LcdWriteString(const char *value) {
 
-    for (int i = 0; value[i] != '\0'; i++)
-        LcdWriteChar(value[i]);
+
+
+
+uint8_t UARTDataReady() {
+    return PIR1bits.RCIF;
 }
 
-void LcdShiftRight() {
-    LcdCmd(0x01);
-    LcdCmd(0x0C);
-}
 
-void LcdShiftLeft() {
-    LcdCmd(0x01);
-    LcdCmd(0x08);
+
+
+
+char UARTReadChar() {
+    while (!UARTDataReady());
+    return RCREG;
+}
+# 80 "UART.c"
+uint8_t UARTReadString(char *buf, uint8_t max_length) {
+    uint8_t i = 0;
+    char tmp = 1;
+    for (i=0 ; i<max_length-1 ; i++) {
+        tmp = UARTReadChar();
+
+        if (tmp == '\0' || tmp == '\n' || tmp == '\r') {
+            break;
+        }
+        buf[i] = tmp;
+    }
+
+    buf[i+1] = '\0';
+
+    return i;
 }

@@ -2655,7 +2655,7 @@ typedef uint16_t uintptr_t;
  void LcdSetCursor(char a, char b);
  void LcdInit(void);
  void LcdWriteChar(char a);
- void LcdWriteString(char *a);
+ void LcdWriteString( const char *a);
  void LcdShiftRight(void);
  void LcdShiftLeft(void);
 # 23 "main.c" 2
@@ -2670,32 +2670,105 @@ uint8_t* readADC(uint8_t pin );
 void isrADC(void);
 # 24 "main.c" 2
 
+# 1 "./UART.h" 1
+# 16 "./UART.h"
+# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
+# 16 "./UART.h" 2
+# 31 "./UART.h"
+void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
+
+
+
+
+
+void UARTSendChar(const char c);
+
+
+
+
+
+
+void UARTSendString(const char* str, const uint8_t max_length);
+
+
+
+
+
+uint8_t UARTDataReady();
+
+
+
+
+
+char UARTReadChar();
+
+
+
+
+
+
+
+uint8_t UARTReadString(char *buf, uint8_t max_length);
+# 25 "main.c" 2
 
 
 char* analogToString(uint8_t value);
+char* intToString(uint8_t value);
+
 
 int main(){
-  TRISD = 0x00;
+  TRISD = 0;
   TRISE = 0;
   ANSEL = 3;
   ANSELH = 0;
   LcdInit();
   initADC();
-  char *val;
+  UARTInit(9600,1);
+  volatile char *val;
+  volatile char *val2;
+  char *contadorString;
   uint8_t *adc1;
   uint8_t *adc2;
+
+  uint8_t contador = 0;
   while(1){
+
     adc1 = readADC(0);
-    LcdClear();
+
     LcdSetCursor(1,1);
     adc2 = readADC(1);
     LcdWriteString("S1:   S2:   S3:");
     LcdSetCursor(2,1);
+
     val = analogToString(*adc1);
     LcdWriteString(val);
     LcdWriteString("V ");
-    val = analogToString(*adc2);
-    LcdWriteString(val);
+
+    UARTSendString(val,6);
+    UARTSendString("V ",3);
+    val2 = analogToString(*adc2);
+    LcdWriteString(val2);
+    LcdWriteString("V ");
+
+
+    UARTSendString(val,6);
+    UARTSendString("V ",3);
+
+
+
+
+    if (UARTDataReady()){
+        char entrada =UARTReadChar();
+        if( entrada == '+'){
+            contador++;
+        }
+        else if (entrada =='-'){
+            contador--;
+        }
+    }
+
+    contadorString = intToString(contador);
+    LcdWriteString(contadorString);
 
   }
   return 0;
@@ -2722,6 +2795,26 @@ char* analogToString(uint8_t value){
     string[4] ='\0';
     return string;
 }
+
+
+char* intToString(uint8_t value){
+    char valor[4];
+
+    uint8_t entero = value/100;
+    valor[0] = entero+48;
+
+    value -= 100*entero;
+
+    valor[1] = value/10 + 48 ;
+    valor[2] = value%10 + 48;
+    valor[3] = '\0';
+
+    return valor;
+
+
+
+}
+
 
 void __attribute__((picinterrupt(("")))) isr(){
     isrADC();

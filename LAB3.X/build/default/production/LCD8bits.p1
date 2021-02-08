@@ -454,11 +454,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 147 ]
 }
 "64
-[; ;LCD8bits.c: 64: void LcdWriteString(char *value) {
-[v _LcdWriteString `(v ~T0 @X0 1 ef1`*uc ]
+[; ;LCD8bits.c: 64: void LcdWriteString(const char *value) {
+[v _LcdWriteString `(v ~T0 @X0 1 ef1`*Cuc ]
 {
 [e :U _LcdWriteString ]
-[v _value `*uc ~T0 @X0 1 r1 ]
+[v _value `*Cuc ~T0 @X0 1 r1 ]
 [f ]
 "66
 [; ;LCD8bits.c: 66:     for (int i = 0; value[i] != '\0'; i++)

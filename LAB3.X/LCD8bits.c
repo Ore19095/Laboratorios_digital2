@@ -61,7 +61,7 @@ void LcdWriteChar(char value) {
     EN = 0;
 }
 
-void LcdWriteString(char *value) {
+void LcdWriteString(const char *value) {
     
     for (int i = 0; value[i] != '\0'; i++)
         LcdWriteChar(value[i]);
@@ -76,5 +76,3 @@ void LcdShiftLeft() {
     LcdCmd(0x01);
     LcdCmd(0x08);
 }
-
-
