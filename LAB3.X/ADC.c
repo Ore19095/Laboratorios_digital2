@@ -32,6 +32,9 @@ void initADC(){
     ADCON0bits.ADCS = 2;
     #endif
     
+    INTCONbits.GIE =1 ; //globalesa activadas
+    INTCONbits.PEIE =1 ; // perifericas activasas
+    
     PIE1bits.ADIE = 1; // interrupcion activada
     
     ADCON1bits.ADFM = 0; // justificado a la izquierda
@@ -58,5 +61,3 @@ void isrADC(){
     }
     return;
 }
-
-

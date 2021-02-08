@@ -24,46 +24,55 @@
 #include "ADC.h"
 
 #define _XTAL_FREQ 4000000
-void printAnalog(uint8_t value);
+char* analogToString(uint8_t value);
+
 int main(){
-  unsigned int a;
   TRISD = 0x00;
   TRISE = 0;
   ANSEL = 3;
   ANSELH = 0;
   LcdInit();
   initADC();
-  while(1)
-  {
+  char *val;
+  uint8_t *adc1;
+  uint8_t *adc2;
+  while(1){
+    adc1 = readADC(0);
     LcdClear();
-    LcdSetCursor(1,1);
+    LcdSetCursor(1,1); // se deja un momento
+    adc2 = readADC(1); //se lee el otro
     LcdWriteString("S1:   S2:   S3:");
     LcdSetCursor(2,1);
-    printAnalog(138);
+    val = analogToString(*adc1);
+    LcdWriteString(val);
+    LcdWriteString("V ");
+    val = analogToString(*adc2);
+    LcdWriteString(val);
+    
   }
   return 0;
 }
 // imprimira valroes con 2 decimales de presicion
-void printAnalog(uint8_t value){
+char* analogToString(uint8_t value){
     float valor =  value *0.019;
-    
+    char string[5]; 
     uint8_t entero =  valor;
     
-    LcdWriteChar(entero + 48);// se imprime el entero
-    LcdWriteChar('.'); //punto decimal
+    string[0] = entero + 48;// se imprime el entero
+    string[1]= '.'; //punto decimal
     valor =( valor - entero); // se elimina la parte entera y se corre el 
     // punto decimal
     valor*=10;
     entero =  valor  ; // se toma la parte entera
-    LcdWriteChar(entero + 48);
+    string[2] = entero + 48;
     
     valor -= entero;
     valor*=10;
     
     entero =  valor  ; // se toma la parte entera
-    LcdWriteChar(entero + 48);
-    
-    
+    string[3] = (entero + 48);
+    string[4] ='\0';
+    return string;
 }
 
 void __interrupt() isr(){

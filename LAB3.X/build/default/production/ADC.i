@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "ADC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "ADC.c" 2
 
 
 
@@ -14,20 +14,8 @@
 
 
 
-#pragma config FOSC = EXTRC_CLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-
+# 1 "./ADC.h" 1
+# 36 "./ADC.h"
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2508,7 +2496,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 21 "main.c" 2
+# 36 "./ADC.h" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2643,86 +2631,57 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 22 "main.c" 2
-
-# 1 "./LCD8bits.h" 1
-# 35 "./LCD8bits.h"
-# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
-# 35 "./LCD8bits.h" 2
-# 55 "./LCD8bits.h"
- void LcdPort(char a);
- void LcdClear(void);
- void LcdSetCursor(char a, char b);
- void LcdInit(void);
- void LcdWriteChar(char a);
- void LcdWriteString(char *a);
- void LcdShiftRight(void);
- void LcdShiftLeft(void);
-# 23 "main.c" 2
-
-# 1 "./ADC.h" 1
-# 37 "./ADC.h"
-# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 37 "./ADC.h" 2
 
 void initADC(void);
 uint8_t* readADC(uint8_t pin );
 void isrADC(void);
-# 24 "main.c" 2
+# 8 "ADC.c" 2
+
+# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
+# 9 "ADC.c" 2
+# 20 "ADC.c"
+uint8_t ADC_VALUE[12];
+
+
+void initADC(){
 
 
 
-char* analogToString(uint8_t value);
 
-int main(){
-  TRISD = 0x00;
-  TRISE = 0;
-  ANSEL = 3;
-  ANSELH = 0;
-  LcdInit();
-  initADC();
-  char *val;
-  uint8_t *adc1;
-  uint8_t *adc2;
-  while(1){
-    adc1 = readADC(0);
-    LcdClear();
-    LcdSetCursor(1,1);
-    adc2 = readADC(1);
-    LcdWriteString("S1:   S2:   S3:");
-    LcdSetCursor(2,1);
-    val = analogToString(*adc1);
-    LcdWriteString(val);
-    LcdWriteString("V ");
-    val = analogToString(*adc2);
-    LcdWriteString(val);
 
-  }
-  return 0;
+
+    ADCON0bits.ADCS = 1;
+
+
+
+
+    INTCONbits.GIE =1 ;
+    INTCONbits.PEIE =1 ;
+
+    PIE1bits.ADIE = 1;
+
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON0bits.ADON = 1;
+    return;
 }
 
-char* analogToString(uint8_t value){
-    float valor = value *0.019;
-    char string[5];
-    uint8_t entero = valor;
-
-    string[0] = entero + 48;
-    string[1]= '.';
-    valor =( valor - entero);
-
-    valor*=10;
-    entero = valor ;
-    string[2] = entero + 48;
-
-    valor -= entero;
-    valor*=10;
-
-    entero = valor ;
-    string[3] = (entero + 48);
-    string[4] ='\0';
-    return string;
+uint8_t* readADC(uint8_t pin){
+    if (ADCON0bits.GO ==0 ){
+         ADCON0bits.CHS = pin;
+        _delay((unsigned long)((3)*(4000000/4000000.0)));
+        ADCON0bits.GO = 1;
+    }
+    return &ADC_VALUE[pin];
 }
 
-void __attribute__((picinterrupt(("")))) isr(){
-    isrADC();
+
+void isrADC(){
+    if(PIR1bits.ADIF){
+        ADC_VALUE[ADCON0bits.CHS] = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+    return;
 }

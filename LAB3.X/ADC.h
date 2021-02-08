@@ -40,4 +40,3 @@ uint8_t* readADC(uint8_t pin );
 void isrADC(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
-
