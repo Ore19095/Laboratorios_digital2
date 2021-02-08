@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+$C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 E E 3 2
 config CONFIG 4 2007 2007 2 2
@@ -84,35 +84,35 @@ STRING 24A-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LAB2.X.production.o
-11 cinit CODE >842:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-11 cinit CODE >845:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-11 cinit CODE >927:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-12 cinit CODE >928:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-13 cinit CODE >929:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-14 cinit CODE >930:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-15 cinit CODE >931:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-16 cinit CODE >932:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-17 cinit CODE >933:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-18 cinit CODE >934:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-19 cinit CODE >935:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1A cinit CODE >936:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1F cinit CODE >940:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-24 cinit CODE >941:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-25 cinit CODE >942:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-2A cinit CODE >943:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-2B cinit CODE >962:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-2C cinit CODE >963:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-2D cinit CODE >964:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-2E cinit CODE >965:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-33 cinit CODE >968:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-34 cinit CODE >969:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-35 cinit CODE >970:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-36 cinit CODE >971:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-37 cinit CODE >972:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-38 cinit CODE >978:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-38 cinit CODE >980:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-39 cinit CODE >981:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-4 intentry CODE >86:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+11 cinit CODE >842:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+11 cinit CODE >845:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+11 cinit CODE >927:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+12 cinit CODE >928:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+13 cinit CODE >929:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+14 cinit CODE >930:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+15 cinit CODE >931:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+16 cinit CODE >932:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+17 cinit CODE >933:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+18 cinit CODE >934:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+19 cinit CODE >935:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1A cinit CODE >936:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1F cinit CODE >940:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+24 cinit CODE >941:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+25 cinit CODE >942:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+2A cinit CODE >943:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+2B cinit CODE >962:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+2C cinit CODE >963:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+2D cinit CODE >964:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+2E cinit CODE >965:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+33 cinit CODE >968:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+34 cinit CODE >969:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+35 cinit CODE >970:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+36 cinit CODE >971:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+37 cinit CODE >972:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+38 cinit CODE >978:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+38 cinit CODE >980:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+39 cinit CODE >981:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+4 intentry CODE >87:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 20D text8 CODE >54:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\ADC.c
 20D text8 CODE >55:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\ADC.c
 213 text8 CODE >56:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\ADC.c
@@ -137,25 +137,25 @@ $dist/default/production\LAB2.X.production.o
 19D text7 CODE >94:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\7Segmentos.c
 1AD text7 CODE >100:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\7Segmentos.c
 1AE text7 CODE >104:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\7Segmentos.c
-3C text6 CODE >86:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 3C text6 CODE >87:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-40 text6 CODE >88:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-44 text6 CODE >89:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-4A text6 CODE >91:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-52 text6 CODE >93:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-63 text6 CODE >96:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-67 text6 CODE >97:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-6B text6 CODE >101:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-73 text6 CODE >102:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-84 text6 CODE >103:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-88 text6 CODE >104:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-8A text6 CODE >108:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-8B text6 CODE >111:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-91 text6 CODE >112:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-92 text6 CODE >113:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-98 text6 CODE >116:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-9D text6 CODE >117:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-A2 text6 CODE >119:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+3C text6 CODE >88:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+40 text6 CODE >89:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+44 text6 CODE >90:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+4A text6 CODE >92:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+52 text6 CODE >94:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+63 text6 CODE >97:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+67 text6 CODE >98:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+6B text6 CODE >102:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+73 text6 CODE >103:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+84 text6 CODE >104:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+88 text6 CODE >105:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+8A text6 CODE >109:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+8B text6 CODE >112:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+91 text6 CODE >113:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+92 text6 CODE >114:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+98 text6 CODE >117:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+9D text6 CODE >118:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+A2 text6 CODE >120:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 AB text5 CODE >5:D:\programas\xc8\pic\sources\c90\common\awdiv.c
 AB text5 CODE >13:D:\programas\xc8\pic\sources\c90\common\awdiv.c
 AE text5 CODE >14:D:\programas\xc8\pic\sources\c90\common\awdiv.c
@@ -230,33 +230,33 @@ FF text5 CODE >36:D:\programas\xc8\pic\sources\c90\common\awdiv.c
 143 maintext CODE >77:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 14E maintext CODE >78:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 157 maintext CODE >79:D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
-240 clrtext CODE >949:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-240 clrtext CODE >950:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-241 clrtext CODE >951:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-241 clrtext CODE >952:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-242 clrtext CODE >953:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-243 clrtext CODE >954:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-244 clrtext CODE >955:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-245 clrtext CODE >956:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-246 clrtext CODE >957:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-247 clrtext CODE >958:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FA inittext CODE >901:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FA inittext CODE >902:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FB inittext CODE >903:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FC inittext CODE >904:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FD inittext CODE >905:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FE inittext CODE >912:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-1FE inittext CODE >913:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-203 inittext CODE >914:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-204 inittext CODE >915:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-205 inittext CODE >916:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-206 inittext CODE >917:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-207 inittext CODE >918:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-208 inittext CODE >919:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-209 inittext CODE >920:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-20A inittext CODE >921:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-20B inittext CODE >922:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
-20C inittext CODE >923:C:\Users\ANGELO~1\AppData\Local\Temp\sh08.s
+240 clrtext CODE >949:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+240 clrtext CODE >950:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+241 clrtext CODE >951:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+241 clrtext CODE >952:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+242 clrtext CODE >953:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+243 clrtext CODE >954:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+244 clrtext CODE >955:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+245 clrtext CODE >956:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+246 clrtext CODE >957:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+247 clrtext CODE >958:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FA inittext CODE >901:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FA inittext CODE >902:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FB inittext CODE >903:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FC inittext CODE >904:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FD inittext CODE >905:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FE inittext CODE >912:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+1FE inittext CODE >913:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+203 inittext CODE >914:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+204 inittext CODE >915:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+205 inittext CODE >916:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+206 inittext CODE >917:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+207 inittext CODE >918:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+208 inittext CODE >919:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+209 inittext CODE >920:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+20A inittext CODE >921:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+20B inittext CODE >922:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
+20C inittext CODE >923:C:\Users\ANGELO~1\AppData\Local\Temp\snps.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -284,10 +284,10 @@ __Hstrings 0 0 ABS 0 strings -
 _IOCB 96 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _PIR2 D 0 ABS 0 - dist/default/production\LAB2.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\LAB2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+___sp 0 0 STACK 2 stack C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 _main 228 0 CODE 0 maintext dist/default/production\LAB2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
-start 1C 0 CODE 0 init C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+start 1C 0 CODE 0 init C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
@@ -296,12 +296,12 @@ _OPTION_REGbits 81 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
-intlevel0 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -318,8 +318,8 @@ __Lmaintext 0 0 ABS 0 maintext -
 __LnvBANK0 0 0 ABS 0 nvBANK0 -
 ___awdiv@divisor 44 0 BANK0 1 cstackBANK0 dist/default/production\LAB2.X.production.o
 __end_of___awdiv 228 0 CODE 0 text5 dist/default/production\LAB2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
-___stacklo 0 0 ABS 0 - C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+___stackhi 0 0 ABS 0 - C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
+___stacklo 0 0 ABS 0 - C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 __LidataCOMMON 0 0 ABS 0 idataCOMMON -
 __end_of_init7S 3F4 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
 start_initialization 22 0 CODE 0 cinit dist/default/production\LAB2.X.production.o
@@ -329,7 +329,7 @@ clear_ram0 480 0 CODE 0 clrtext dist/default/production\LAB2.X.production.o
 __pcstackBANK0 44 0 BANK0 1 cstackBANK0 dist/default/production\LAB2.X.production.o
 _readADC 39C 0 CODE 0 text1 dist/default/production\LAB2.X.production.o
 __end_of_initADC 480 0 CODE 0 text2 dist/default/production\LAB2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+___int_sp 0 0 STACK 2 stack C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -384,7 +384,7 @@ __size_of_displayValue 0 0 ABS 0 - dist/default/production\LAB2.X.production.o
 __end_of_isr 156 0 CODE 0 text6 dist/default/production\LAB2.X.production.o
 __HnvBANK0 0 0 ABS 0 nvBANK0 -
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\ANGELO~1\AppData\Local\Temp\sh08.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\ANGELO~1\AppData\Local\Temp\snps.o
 _init7S 3CC 0 CODE 0 text3 dist/default/production\LAB2.X.production.o
 _isrADC 41A 0 CODE 0 text8 dist/default/production\LAB2.X.production.o
 __pdataBANK0 34 0 BANK0 1 dataBANK0 dist/default/production\LAB2.X.production.o

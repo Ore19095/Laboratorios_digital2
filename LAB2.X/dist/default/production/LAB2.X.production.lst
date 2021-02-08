@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Wed Feb 03 16:41:28 2021
+                                                                                               Wed Feb 03 18:34:42 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -1330,7 +1330,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1316  003C                     __ptext6:	
   1317 ;; *************** function _isr *****************
   1318 ;; Defined at:
-  1319 ;;		line 86 in file "main.c"
+  1319 ;;		line 87 in file "main.c"
   1320 ;; Parameters:    Size  Location     Type
   1321 ;;		None
   1322 ;; Auto vars:     Size  Location     Type
@@ -1364,7 +1364,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1350  003C                     _isr:
   1351  003C                     i1l1092:
   1352                           
-  1353                           ;main.c: 87:     if (INTCONbits.RBIF){
+  1353                           ;main.c: 88:     if (INTCONbits.RBIF){
   1354  003C  1C0B               	btfss	11,0	;volatile
   1355  003D  283F               	goto	u39_21
   1356  003E  2840               	goto	u39_20
@@ -1373,13 +1373,13 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1359  0040                     u39_20:
   1360  0040                     i1l1094:
   1361                           
-  1362                           ;main.c: 88:         portbAnterior = portbActual;
+  1362                           ;main.c: 89:         portbAnterior = portbActual;
   1363  0040  087C               	movf	_portbActual,w	;volatile
   1364  0041  00F2               	movwf	??_isr
   1365  0042  0872               	movf	??_isr,w
   1366  0043  00FD               	movwf	_portbAnterior	;volatile
   1367                           
-  1368                           ;main.c: 89:         portbActual = PORTB;
+  1368                           ;main.c: 90:         portbActual = PORTB;
   1369  0044  1283               	bcf	3,5	;RP0=0, select bank0
   1370  0045  1303               	bcf	3,6	;RP1=0, select bank0
   1371  0046  0806               	movf	6,w	;volatile
@@ -1388,7 +1388,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1374  0049  00FC               	movwf	_portbActual	;volatile
   1375  004A                     i1l1096:
   1376                           
-  1377                           ;main.c: 91:         if ((portbAnterior & 1) == 0 && (portbActual & 1) == 1){
+  1377                           ;main.c: 92:         if ((portbAnterior & 1) == 0 && (portbActual & 1) == 1){
   1378  004A  187D               	btfsc	_portbAnterior,0	;volatile
   1379  004B  284D               	goto	u40_21
   1380  004C  284E               	goto	u40_20
@@ -1404,7 +1404,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1390  0052                     u41_20:
   1391  0052                     i1l1100:
   1392                           
-  1393                           ;main.c: 93:             if (micros - timeB1 >= 50){
+  1393                           ;main.c: 94:             if (micros - timeB1 >= 50){
   1394  0052  0877               	movf	_timeB1,w	;volatile
   1395  0053  0279               	subwf	_micros,w	;volatile
   1396  0054  00F2               	movwf	??_isr
@@ -1426,21 +1426,21 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1412  0063                     u42_20:
   1413  0063                     i1l1102:
   1414                           
-  1415                           ;main.c: 96:                 timeB1 = micros;
+  1415                           ;main.c: 97:                 timeB1 = micros;
   1416  0063  087A               	movf	_micros+1,w	;volatile
   1417  0064  00F8               	movwf	_timeB1+1	;volatile
   1418  0065  0879               	movf	_micros,w	;volatile
   1419  0066  00F7               	movwf	_timeB1	;volatile
   1420  0067                     i1l1104:
   1421                           
-  1422                           ;main.c: 97:                 PORTD++;
+  1422                           ;main.c: 98:                 PORTD++;
   1423  0067  3001               	movlw	1
   1424  0068  00F2               	movwf	??_isr
   1425  0069  0872               	movf	??_isr,w
   1426  006A  0788               	addwf	8,f	;volatile
   1427  006B                     i1l1106:
   1428                           
-  1429                           ;main.c: 101:         if((portbAnterior & 2) == 0 && (portbActual & 2) == 2){
+  1429                           ;main.c: 102:         if((portbAnterior & 2) == 0 && (portbActual & 2) == 2){
   1430  006B  18FD               	btfsc	_portbAnterior,1	;volatile
   1431  006C  286E               	goto	u43_21
   1432  006D  286F               	goto	u43_20
@@ -1456,7 +1456,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1442  0073                     u44_20:
   1443  0073                     i1l1110:
   1444                           
-  1445                           ;main.c: 102:             if(micros - timeB2 >= 50){
+  1445                           ;main.c: 103:             if(micros - timeB2 >= 50){
   1446  0073  0826               	movf	_timeB2,w	;volatile
   1447  0074  0279               	subwf	_micros,w	;volatile
   1448  0075  00F2               	movwf	??_isr
@@ -1478,23 +1478,23 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1464  0084                     u45_20:
   1465  0084                     i1l1112:
   1466                           
-  1467                           ;main.c: 103:                 timeB2 = micros;
+  1467                           ;main.c: 104:                 timeB2 = micros;
   1468  0084  087A               	movf	_micros+1,w	;volatile
   1469  0085  00A7               	movwf	_timeB2+1	;volatile
   1470  0086  0879               	movf	_micros,w	;volatile
   1471  0087  00A6               	movwf	_timeB2	;volatile
   1472  0088                     i1l1114:
   1473                           
-  1474                           ;main.c: 104:                 PORTD--;
+  1474                           ;main.c: 105:                 PORTD--;
   1475  0088  3001               	movlw	1
   1476  0089  0288               	subwf	8,f	;volatile
   1477  008A                     i1l1116:
   1478                           
-  1479                           ;main.c: 108:         INTCONbits.RBIF = 0;
+  1479                           ;main.c: 109:         INTCONbits.RBIF = 0;
   1480  008A  100B               	bcf	11,0	;volatile
   1481  008B                     i1l1118:
   1482                           
-  1483                           ;main.c: 111:      if (PIR1bits.TMR2IF){
+  1483                           ;main.c: 112:      if (PIR1bits.TMR2IF){
   1484  008B  1283               	bcf	3,5	;RP0=0, select bank0
   1485  008C  1303               	bcf	3,6	;RP1=0, select bank0
   1486  008D  1C8C               	btfss	12,1	;volatile
@@ -1505,11 +1505,11 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1491  0091                     u46_20:
   1492  0091                     i1l1120:
   1493                           
-  1494                           ;main.c: 112:         PIR1bits.TMR2IF = 0;
+  1494                           ;main.c: 113:         PIR1bits.TMR2IF = 0;
   1495  0091  108C               	bcf	12,1	;volatile
   1496  0092                     i1l1122:
   1497                           
-  1498                           ;main.c: 113:         micros+= 50;
+  1498                           ;main.c: 114:         micros+= 50;
   1499  0092  3032               	movlw	50
   1500  0093  07F9               	addwf	_micros,f	;volatile
   1501  0094  1803               	skipnc
@@ -1518,11 +1518,11 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
   1504  0097  07FA               	addwf	_micros+1,f	;volatile
   1505  0098                     i1l1124:
   1506                           
-  1507                           ;main.c: 116:     isrADC();
+  1507                           ;main.c: 117:     isrADC();
   1508  0098  120A  118A  220D  120A  118A  	fcall	_isrADC
   1509  009D                     i1l1126:
   1510                           
-  1511                           ;main.c: 117:     isrTimer0();
+  1511                           ;main.c: 118:     isrTimer0();
   1512  009D  120A  118A  216C  120A  118A  	fcall	_isrTimer0
   1513  00A2                     i1l75:
   1514  00A2  0876               	movf	??_isr+4,w
@@ -1962,7 +1962,7 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Wed Feb 03 16:41:28 2021
+Symbol Table                                                                                   Wed Feb 03 18:34:42 2021
 
                       pc 0002                       l92 023F                       l95 01E3  
                      l96 01E5             ___awdiv@sign 004A                       fsr 0004  

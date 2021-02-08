@@ -1,0 +1,235 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"43 D:\programas\xc8\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"10 D:\programas\xc8\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"242
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"8 D:\programas\xc8\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"4 D:\programas\xc8\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 D:\programas\xc8\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"6 D:\programas\xc8\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"3 D:\programacion\PIC\Laboratorios_digital2\LAB3.X\LCD8bits.c
+[v _LcdPort LcdPort `(v  1 e 1 0 ]
+"16
+[v _LcdCmd LcdCmd `(v  1 e 1 0 ]
+"24
+[v _LcdClear LcdClear `(v  1 e 1 0 ]
+"29
+[v _LcdSetCursor LcdSetCursor `(v  1 e 1 0 ]
+"41
+[v _LcdInit LcdInit `(v  1 e 1 0 ]
+"56
+[v _LcdWriteChar LcdWriteChar `(v  1 e 1 0 ]
+"64
+[v _LcdWriteString LcdWriteString `(v  1 e 1 0 ]
+"28 D:\programacion\PIC\Laboratorios_digital2\LAB3.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"47
+[v _printAnalog printAnalog `(v  1 e 1 0 ]
+"69
+[v _isr isr `II(v  1 e 1 0 ]
+"1602 D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1664
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3449
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"4181
+[v _RD0 RD0 `VEb  1 e 0 @64 ]
+"4184
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"4187
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"4190
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"4193
+[v _RD4 RD4 `VEb  1 e 0 @68 ]
+"4196
+[v _RD5 RD5 `VEb  1 e 0 @69 ]
+"4199
+[v _RD6 RD6 `VEb  1 e 0 @70 ]
+"4202
+[v _RD7 RD7 `VEb  1 e 0 @71 ]
+"4205
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"4211
+[v _RE2 RE2 `VEb  1 e 0 @74 ]
+"28 D:\programacion\PIC\Laboratorios_digital2\LAB3.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"45
+} 0
+"47
+[v _printAnalog printAnalog `(v  1 e 1 0 ]
+{
+[v printAnalog@value value `uc  1 a 1 wreg ]
+"48
+[v printAnalog@valor valor `f  1 a 4 42 ]
+"50
+[v printAnalog@entero entero `uc  1 a 1 41 ]
+"47
+[v printAnalog@value value `uc  1 a 1 wreg ]
+[v printAnalog@value value `uc  1 a 1 40 ]
+"67
+} 0
+"10 D:\programas\xc8\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 6 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 5 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 4 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 4 ]
+"44
+} 0
+"43 D:\programas\xc8\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 9 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 8 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 4 ]
+"70
+} 0
+"242 D:\programas\xc8\pic\sources\c90\common\sprcadd.c
+[v ___flsub __flsub `(d  1 e 4 0 ]
+{
+[v ___flsub@a a `d  1 p 4 16 ]
+[v ___flsub@b b `d  1 p 4 20 ]
+"250
+} 0
+"10
+[v ___fladd __fladd `(d  1 e 4 0 ]
+{
+"17
+[v ___fladd@grs grs `uc  1 a 1 7 ]
+"15
+[v ___fladd@bexp bexp `uc  1 a 1 6 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 5 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 4 ]
+"10
+[v ___fladd@b b `d  1 p 4 0 ]
+[v ___fladd@a a `d  1 p 4 4 ]
+"237
+} 0
+"8 D:\programas\xc8\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S393 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S398 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S401 . 4 `l 1 i 4 0 `d 1 f 4 0 `S393 1 fAsBytes 4 0 `S398 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S401  1 a 4 30 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 24 ]
+[s S470 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S473 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S470 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S473  1 a 2 34 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 29 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 28 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 23 ]
+"8
+[v ___flmul@b b `d  1 p 4 10 ]
+[v ___flmul@a a `d  1 p 4 14 ]
+"205
+} 0
+"4 D:\programas\xc8\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 2 ]
+"5
+[v __Umul8_16@product product `ui  1 a 2 0 ]
+"4
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 4 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 4 ]
+"60
+} 0
+"64 D:\programacion\PIC\Laboratorios_digital2\LAB3.X\LCD8bits.c
+[v _LcdWriteString LcdWriteString `(v  1 e 1 0 ]
+{
+[v LcdWriteString@value value `*.24uc  1 a 1 wreg ]
+"66
+[v LcdWriteString@i i `i  1 a 2 0 ]
+"64
+[v LcdWriteString@value value `*.24uc  1 a 1 wreg ]
+"66
+[v LcdWriteString@value value `*.24uc  1 a 1 2 ]
+"68
+} 0
+"56
+[v _LcdWriteChar LcdWriteChar `(v  1 e 1 0 ]
+{
+[v LcdWriteChar@value value `uc  1 a 1 wreg ]
+[v LcdWriteChar@value value `uc  1 a 1 wreg ]
+[v LcdWriteChar@value value `uc  1 a 1 7 ]
+"62
+} 0
+"29
+[v _LcdSetCursor LcdSetCursor `(v  1 e 1 0 ]
+{
+[v LcdSetCursor@row row `uc  1 a 1 wreg ]
+[v LcdSetCursor@row row `uc  1 a 1 wreg ]
+[v LcdSetCursor@column column `uc  1 p 1 9 ]
+[v LcdSetCursor@row row `uc  1 a 1 2 ]
+"39
+} 0
+"41
+[v _LcdInit LcdInit `(v  1 e 1 0 ]
+{
+"54
+} 0
+"24
+[v _LcdClear LcdClear `(v  1 e 1 0 ]
+{
+"27
+} 0
+"16
+[v _LcdCmd LcdCmd `(v  1 e 1 0 ]
+{
+[v LcdCmd@value value `uc  1 a 1 wreg ]
+[v LcdCmd@value value `uc  1 a 1 wreg ]
+[v LcdCmd@value value `uc  1 a 1 8 ]
+"22
+} 0
+"3
+[v _LcdPort LcdPort `(v  1 e 1 0 ]
+{
+[v LcdPort@value value `uc  1 a 1 wreg ]
+[v LcdPort@value value `uc  1 a 1 wreg ]
+"6
+[v LcdPort@value value `uc  1 a 1 5 ]
+"14
+} 0
+"69 D:\programacion\PIC\Laboratorios_digital2\LAB3.X\main.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"71
+} 0

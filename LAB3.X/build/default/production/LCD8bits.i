@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "LCD8bits.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,30 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
-
-
-
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
+# 1 "LCD8bits.c" 2
+# 1 "./LCD8bits.h" 1
+# 34 "./LCD8bits.h"
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2510,7 +2489,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 23 "main.c" 2
+# 34 "./LCD8bits.h" 2
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2645,106 +2624,92 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 24 "main.c" 2
+# 35 "./LCD8bits.h" 2
+# 55 "./LCD8bits.h"
+ void LcdPort(char a);
+ void LcdClear(void);
+ void LcdSetCursor(char a, char b);
+ void LcdInit(void);
+ void LcdWriteChar(char a);
+ void LcdWriteString(char *a);
+ void LcdShiftRight(void);
+ void LcdShiftLeft(void);
+# 1 "LCD8bits.c" 2
 
 
+void LcdPort(char value) {
 
 
-
-
-# 1 "./ADC.h" 1
-# 37 "./ADC.h"
-# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
-# 37 "./ADC.h" 2
-
-void initADC(void);
-uint8_t* readADC(uint8_t pin );
-void isrADC(void);
-# 30 "main.c" 2
-
-# 1 "./7Segmentos.h" 1
-# 66 "./7Segmentos.h"
-# 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
-# 66 "./7Segmentos.h" 2
-
-void init7S(uint8_t*);
-void displayValue(uint8_t);
-void isrTimer0(void);
-# 31 "main.c" 2
-# 45 "main.c"
-volatile uint16_t micros = 0;
-volatile uint16_t timeB1 = 0, timeB2=0;
-volatile uint8_t portbAnterior = 255;
-volatile uint8_t portbActual = 255;
-
-void main(void) {
-    ANSEL = 1;
-    ANSELH = 0;
-    TRISA = 1;
-    TRISB = 255;
-    TRISC = 0;
-    TRISD = 0;
-    IOCB = 255;
-    PORTD = 0;
-    OPTION_REGbits.nRBPU = 0;
-
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.RBIE = 1;
-    PIE1bits.TMR2IE = 1;
-
-    PIR2 = 50;
-
-
-    T2CON = 0b00000100;
-
-
-    initADC();
-    init7S(&PORTC);
-
-    uint8_t* adc0;
-    while(1){
-        adc0 = readADC(0);
-        displayValue(*adc0);
-        RA1 = (*adc0 > PORTD);
-
-
-    }
-
-    return;
+    RD0 = value &1;
+    RD1 = (value & 2) >> 1;
+    RD2 = (value & 4) >> 2;
+    RD3 = (value &8) >> 3;
+    RD4 = (value & 16)>>4;
+    RD5 = (value & 32) >> 5 ;
+    RD6 = (value & 64) >> 6;
+    RD7 = (value & 128) >> 7;
 }
 
-void __attribute__((picinterrupt(("")))) isr(void){
-    if (INTCONbits.RBIF){
-        portbAnterior = portbActual;
-        portbActual = PORTB;
+void LcdCmd(char value) {
+    RE2 = 0;
+    LcdPort(value);
+    RE0 = 1;
+    _delay((unsigned long)((4)*(4000000/4000.0)));
+    RE0 = 0;
+}
 
-        if ((portbAnterior & 1) == 0 && (portbActual & 1) == 1){
+void LcdClear() {
+    LcdCmd(0);
+    LcdCmd(1);
+}
 
-            if (micros - timeB1 >= 50){
-
-
-                timeB1 = micros;
-                PORTD++;
-            }
-        }
-
-        if((portbAnterior & 2) == 0 && (portbActual & 2) == 2){
-            if(micros - timeB2 >= 50){
-                timeB2 = micros;
-                PORTD--;
-            }
-        }
-
-        INTCONbits.RBIF = 0;
+void LcdSetCursor(char row, char column) {
+    switch(row){
+        case 1:
+            LcdCmd(0x80 + column - 1);
+            break;
+        case 2:
+            LcdCmd(0xC0 + column - 1);
+            break;
     }
 
-     if (PIR1bits.TMR2IF){
-        PIR1bits.TMR2IF = 0;
-        micros+= 50;
-    }
+}
 
-    isrADC();
-    isrTimer0();
-    return;
+void LcdInit() {
+    LcdPort(0x00);
+    _delay((unsigned long)((20)*(4000000/4000.0)));
+    LcdCmd(0x30);
+    _delay((unsigned long)((5)*(4000000/4000.0)));
+    LcdCmd(0x30);
+    _delay((unsigned long)((11)*(4000000/4000.0)));
+    LcdCmd(0x30);
+
+    LcdCmd(0x38);
+    LcdCmd(0x0C);
+    LcdCmd(0x6);
+
+}
+
+void LcdWriteChar(char value) {
+    RE2 = 1;
+    LcdPort(value);
+    RE0 = 1;
+    _delay((unsigned long)((40)*(4000000/4000000.0)));
+    RE0 = 0;
+}
+
+void LcdWriteString(char *value) {
+
+    for (int i = 0; value[i] != '\0'; i++)
+        LcdWriteChar(value[i]);
+}
+
+void LcdShiftRight() {
+    LcdCmd(0x01);
+    LcdCmd(0x0C);
+}
+
+void LcdShiftLeft() {
+    LcdCmd(0x01);
+    LcdCmd(0x08);
 }

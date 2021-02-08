@@ -27,7 +27,7 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "50 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"86
+"87
 [v _isr isr `II(v  1 e 1 0 ]
 "15 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\7Segmentos.c
 [v _tableDisplay tableDisplay `[16]uc  1 s 16 tableDisplay ]
@@ -172,7 +172,7 @@
 {
 "75
 [v main@adc0 adc0 `*.4uc  1 a 1 14 ]
-"84
+"85
 } 0
 "44 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\ADC.c
 [v _readADC readADC `(*.4uc  1 e 1 0 ]
@@ -215,10 +215,10 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"86 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
+"87 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"119
+"120
 } 0
 "74 D:\programacion\PIC\Laboratorios_digital2\LAB2.X\7Segmentos.c
 [v _isrTimer0 isrTimer0 `(v  1 e 1 0 ]
