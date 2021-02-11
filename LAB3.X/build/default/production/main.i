@@ -14,7 +14,8 @@
 
 
 
-#pragma config FOSC = EXTRC_CLKOUT
+
+#pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF
@@ -27,6 +28,11 @@
 
 
 #pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+
+
+
+
 
 # 1 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
@@ -2508,7 +2514,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "D:/programas/MPLAB/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 21 "main.c" 2
+# 27 "main.c" 2
+
 
 # 1 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "D:\\programas\\xc8\\pic\\include\\c90\\stdint.h" 3
@@ -2643,7 +2650,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 22 "main.c" 2
+# 29 "main.c" 2
 
 # 1 "./LCD8bits.h" 1
 # 35 "./LCD8bits.h"
@@ -2658,7 +2665,7 @@ typedef uint16_t uintptr_t;
  void LcdWriteString( const char *a);
  void LcdShiftRight(void);
  void LcdShiftLeft(void);
-# 23 "main.c" 2
+# 30 "main.c" 2
 
 # 1 "./ADC.h" 1
 # 37 "./ADC.h"
@@ -2668,7 +2675,7 @@ typedef uint16_t uintptr_t;
 void initADC(void);
 uint8_t* readADC(uint8_t pin );
 void isrADC(void);
-# 24 "main.c" 2
+# 31 "main.c" 2
 
 # 1 "./UART.h" 1
 # 16 "./UART.h"
@@ -2709,7 +2716,7 @@ char UARTReadChar();
 
 
 uint8_t UARTReadString(char *buf, uint8_t max_length);
-# 25 "main.c" 2
+# 32 "main.c" 2
 
 
 char* analogToString(uint8_t value);
@@ -2732,6 +2739,7 @@ int main(){
 
   uint8_t contador = 0;
   while(1){
+
 
     adc1 = readADC(0);
 

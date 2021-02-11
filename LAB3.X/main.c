@@ -5,7 +5,8 @@
  * Created on 8 de febrero de 2021, 09:40 AM
  */
 
-#pragma config FOSC = EXTRC_CLKOUT// Oscillator Selection bits (RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
+#// CONFIG1
+#pragma config FOSC = INTRC_NOCLKOUT// Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
@@ -18,6 +19,12 @@
 
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
+#pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
+
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
+
+#include <xc.h>
 #include <xc.h>
 #include<stdint.h>
 #include "LCD8bits.h"
@@ -44,6 +51,7 @@ int main(){
   
   uint8_t contador = 0;
   while(1){
+      //LcdClear();
       //--------- se leen los valors del adc y se escribe en la lcd
     adc1 = readADC(0);
     //LcdClear();
@@ -64,13 +72,13 @@ int main(){
     //-- se enviia de nuevo, puesyo que val y val2 hacen referencia a la misma
     //variable
     UARTSendString(val,6);
-    UARTSendString("V ",3);
+    UARTSendString("V \n",3);
     
     
     // se verifica si hay algo en el uart 
     
     if (UARTDataReady()){
-        char entrada  =UARTReadChar();
+        char entrada  = UARTReadChar();
         if( entrada == '+'){
             contador++;
         }
@@ -81,7 +89,7 @@ int main(){
     
     contadorString = intToString(contador);
     LcdWriteString(contadorString);
-    
+   // __delay_ms(1000);
   }
   return 0;
 }

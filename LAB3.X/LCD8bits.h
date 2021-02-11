@@ -21,7 +21,7 @@
 
 /* 
  * File:   
- * Author: 
+ * Author: electrosome
  * Comments:
  * Revision history: 
  */
