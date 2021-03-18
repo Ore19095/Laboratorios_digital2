@@ -25,7 +25,6 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
-#include <xc.h>
 #include<stdint.h>
 #include "LCD8bits.h"
 #include "ADC.h"
